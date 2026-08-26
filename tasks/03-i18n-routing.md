@@ -24,13 +24,19 @@ Locale-aware routing (`/en`, `/lv`), root redirect, language toggle, and typed t
 
 ## Acceptance Criteria
 
-- [ ] `/` redirects to `/en` (no cookie) and `/lv` (Accept-Language `lv`)
-- [ ] `/en` and `/lv` render; invalid locale redirects to `/en`
-- [ ] Toggle switches language and persists cookie `NEXT_LOCALE`
-- [ ] `<html lang>` correct per locale
-- [ ] UI strings come only from dictionaries (no hardcoded text in components)
-- [ ] `npm run lint`, `npm run typecheck`, `npm run build` clean
+- [x] `/` redirects to `/en` (no cookie) and `/lv` (Accept-Language `lv`)
+- [x] `/en` and `/lv` render; invalid locale redirects to `/en`
+- [x] Toggle switches language and persists cookie `NEXT_LOCALE`
+- [x] `<html lang>` correct per locale
+- [x] UI strings come only from dictionaries (no hardcoded text in components)
+- [x] `npm run lint`, `npm run typecheck`, `npm run build` clean
 
 ## Notes
 
-- Latvian translations should read naturally (owner reviews in Task 08).
+- Next.js 16 renamed middleware → **Proxy**: implemented as `src/proxy.ts`
+  (`export function proxy()`). `middleware.ts` is deprecated in 16.
+- `<html lang>` lives in `app/[locale]/layout.tsx`; root `app/layout.tsx` is a
+  pass-through (returns children) — same pattern as Vercel's official i18n example.
+- Verified with curl: no-cookie → /en, `Accept-Language: lv` → /lv, cookie `NEXT_LOCALE=lv` → /lv,
+  `/de` → /en, `lang="en"`/`lang="lv"` correct.
+- Latvian translations drafted; owner review in Task 08.

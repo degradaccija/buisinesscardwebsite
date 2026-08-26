@@ -23,15 +23,21 @@ tasks have a working dev environment.
 
 ## Acceptance Criteria
 
-- [ ] `npm run dev` serves the app on :3000
-- [ ] `npm run lint` clean
-- [ ] `npm run typecheck` clean
-- [ ] `npm run build` succeeds
-- [ ] Tailwind theme tokens defined per spec §7 (purple accent, dark surfaces)
-- [ ] `.env.local` gitignored; `.env.local.example` committed
-- [ ] Git repo initialized at root with initial commit
+- [x] `npm run dev` serves the app on :3000
+- [x] `npm run lint` clean
+- [x] `npm run typecheck` clean
+- [x] `npm run build` succeeds
+- [x] Tailwind theme tokens defined per spec §7 (purple accent, dark surfaces)
+- [x] `.env.local` gitignored; `.env.local.example` committed
+- [x] Git repo initialized at root with initial commit
 
 ## Notes
 
 - Owner will need to create: Supabase project, Resend account (free), Vercel project.
   Capture their URLs/keys in `.env.local` (never committed).
+- Deviations from original spec (agreed): `create-next-app` scaffolded **Next.js 16.3.3**
+  + **Tailwind CSS 4** (CSS-first `@theme` tokens, no `tailwind.config.ts`). Spec §3/§7
+  and AGENTS.md updated accordingly. `lucide-react` also installed here (Task 04 needs it).
+- Initial `npm install` was interrupted, corrupting `@next/swc-darwin-arm64`;
+  fixed by reinstalling that package. Build now passes with Turbopack.
+- `next dev` smoke test: `/en` 200, `/lv` 200, `/` 307.

@@ -25,13 +25,19 @@ Render the full single-page business card: all 7 sections fed from Supabase cont
 
 ## Acceptance Criteria
 
-- [ ] All 7 sections render on `/en` and `/lv` with correct language from DB columns
-- [ ] Content comes only from `src/lib/content.ts` (components receive props; no fetching inside)
-- [ ] Section nav anchors work; smooth scroll; sticky nav offset correct
-- [ ] Empty/nullable fields degrade gracefully (no image, no live_url)
-- [ ] `npm run lint`, `npm run typecheck`, `npm run build` clean
+- [x] All 7 sections render on `/en` and `/lv` with correct language from DB columns
+- [x] Content comes only from `src/lib/content.ts` (components receive props; no fetching inside)
+- [x] Section nav anchors work; smooth scroll; sticky nav offset correct
+- [x] Empty/nullable fields degrade gracefully (no image, no live_url)
+- [x] `npm run lint`, `npm run typecheck`, `npm run build` clean
 
 ## Notes
 
-- Photo: use `Monogram` until `site_profile.photo_url` is set.
-- Keep sections' props typed from `src/lib/types.ts`.
+- Photo: uses `Monogram` until `site_profile.photo_url` is set; `next/image` with
+  permissive `remotePatterns` added in `next.config.ts` for future photo hosts.
+- Sections render `null` when their data is empty (except Hero, which shows a stub
+  message when Supabase isn't configured yet).
+- Page-level `revalidate = 60` set (ISR per spec §4); build output confirms SSG routes.
+- Dates formatted per locale (`en-GB` / `lv-LV`, short month + year); `null` end date → dict "Present"/"Šobrīd".
+- Layout (Nav/Footer) fetches profile independently of the page (2 requests/build — trivial).
+- Contact section renders links + form slot; form wired in Task 06 (done — form included).

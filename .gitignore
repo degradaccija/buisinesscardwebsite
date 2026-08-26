@@ -1,3 +1,6 @@
 # root-level ignores (site/ has its own .gitignore)
 .DS_Store
 supabase/.env
+design-inspiration/
+.playwright-cli/
+.playwright/

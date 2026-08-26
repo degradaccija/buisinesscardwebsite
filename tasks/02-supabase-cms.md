@@ -27,14 +27,21 @@ Create the Supabase schema (migrations + seed) so content lives in the DB per sp
 
 ## Acceptance Criteria
 
-- [ ] Migration creates all 6 tables per spec §5 (columns, types)
-- [ ] RLS policies match spec §5
-- [ ] `seed.sql` inserts profile, skills, experience, projects, services (bilingual `_en`/`_lv`)
-- [ ] `src/lib/types.ts` + `content.ts` typed helpers compile
-- [ ] `npm run lint`, `npm run typecheck`, `npm run build` clean
-- [ ] `CONTENT_TODO.md` lists all placeholders
-- [ ] If owner provided Supabase creds: schema applied and seed loaded successfully (verify via dashboard)
+- [x] Migration creates all 6 tables per spec §5 (columns, types)
+- [x] RLS policies match spec §5
+- [x] `seed.sql` inserts profile, skills, experience, projects, services (bilingual `_en`/`_lv`)
+- [x] `src/lib/types.ts` + `content.ts` typed helpers compile
+- [x] `npm run lint`, `npm run typecheck`, `npm run build` clean
+- [x] `CONTENT_TODO.md` lists all placeholders
+- [ ] If owner provided Supabase creds: schema applied and seed loaded successfully (verify via dashboard) — *deferred: owner has no Supabase project yet; checklist in `CONTENT_TODO.md`*
 
 ## Notes
 
-- If Supabase CLI project link isn't available yet, keep migration + seed ready; applying them becomes part of Task 07 deploy checklist.
+- Supabase CLI not installed locally; wrote plain SQL (`supabase/migrations/0001_init.sql` +
+  `supabase/seed.sql`) that works via `supabase db push` or copy-paste into SQL editor.
+  CLI install added to setup checklist.
+- `supabase/functions/contact-notify/` not created yet (Task 06).
+- Decision (spec-consistent): content helpers return `null`/`[]` when Supabase env vars
+  are missing, so the site builds and degrades gracefully before accounts exist.
+- ISR: page-level `revalidate: 60` will be set in Task 05 (spec §4).
+- `server-only` package added for the service-role client (`src/lib/supabase/server.ts`).

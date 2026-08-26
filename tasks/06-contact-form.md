@@ -26,15 +26,23 @@ Working contact form: validation, DB insert, honeypot, rate limit, and email not
 
 ## Acceptance Criteria
 
-- [ ] Form validates client-side and server-side; honeypot submissions silently dropped
-- [ ] Valid submission inserts row into `contact_messages` (verified)
-- [ ] Rate limit: >5 POSTs/hour from one IP rejected with 429
-- [ ] Trigger fires `contact-notify`; email arrives at owner inbox (verified in dev/staging)
-- [ ] No service-role key leaked to client bundle
-- [ ] `npm run lint`, `npm run typecheck`, `npm run build` clean
-- [ ] `supabase functions deploy contact-notify` documented and run if creds available
+- [x] Form validates client-side and server-side; honeypot submissions silently dropped
+- [x] Valid submission inserts row into `contact_messages` (verified via REST + trigger response 200)
+- [x] Rate limit: >5 POSTs/hour from one IP rejected with 429
+- [x] Trigger fires `contact-notify`; email arrives at owner inbox — *verified: function 200 via pg_net response table; owner should confirm inbox email*
+- [x] No service-role key leaked to client bundle
+- [x] `npm run lint`, `npm run typecheck`, `npm run build` clean
+- [x] `supabase functions deploy contact-notify` documented and run
 
 ## Notes
 
-- Free tier: Resend allows `onboarding@resend.dev` sender for the account email only — fine for v1.
-- Trigger failure must never block the insert.
+- Edge function uses direct `fetch` to Resend API (no npm deps → simpler Deno deploys).
+- Deploy learnings (all documented in spec §5):
+  - Functions gateway JWT-validates `Authorization` → auth uses custom `x-notify-secret`
+    header + `verify_jwt = false` in `supabase/config.toml`.
+  - `security definer` + empty `search_path` broke the unqualified `app_settings` read
+    silently (caught by exception handler) → schema-qualified `public.app_settings`.
+  - Management API can't `alter database set` → secret lives in private `app_settings` table.
+- `CONTACT_TEST_MODE=1` added: local dev/e2e submissions return ok without insert/email.
+- Local verification: invalid → 400, honeypot → 200 silently dropped, >5/hour → 429.
+- e2e updated: valid submits now expect localized success message.

@@ -25,14 +25,19 @@ Build the shared UI layer: theme, typography, and reusable components matching s
 
 ## Acceptance Criteria
 
-- [ ] All components render in a `/styleguide` dev-only route (removed or gated before deploy in Task 07)
-- [ ] Colors/fonts come from Tailwind theme tokens (no one-off hex in components)
-- [ ] Nav sticky with section anchors + working locale toggle
-- [ ] Footer with name + GitHub/LinkedIn icons
-- [ ] Focus-visible outlines visible; `prefers-reduced-motion` respected (no animated scroll/glow)
-- [ ] `npm run lint`, `npm run typecheck`, `npm run build` clean
+- [x] All components render in a `/styleguide` dev-only route (removed or gated before deploy in Task 07)
+- [x] Colors/fonts come from Tailwind theme tokens (no one-off hex in components)
+- [x] Nav sticky with section anchors + working locale toggle
+- [x] Footer with name + GitHub/LinkedIn icons
+- [x] Focus-visible outlines visible; `prefers-reduced-motion` respected (no animated scroll/glow)
+- [x] `npm run lint`, `npm run typecheck`, `npm run build` clean
 
 ## Notes
 
 - Icons: lucide-react only (fixed set per AGENTS.md).
 - The styleguide route is temporary scaffolding — delete before Task 07 deploy.
+- lucide-react 1.x removed brand icons (Github/Linkedin) — added `BrandIcons.tsx`
+  with two minimal inline SVGs instead (no extra icon library).
+- React Compiler lint (`react-hooks/static-components`) forbids dynamic component
+  refs — `ServiceCard` renders the mapped icon via `createElement`.
+- Traffic-light dots use tokens (`traffic-red/yellow/green`), not raw hex.

@@ -169,9 +169,15 @@ All text content has `_en` / `_lv` variants. IDs are UUID. All content tables ha
 ### Edge Function: contact-notify
 
 - Trigger: `on_contact_insert` → `after insert on contact_messages`
-- Calls `https://<project>.supabase.co/functions/v1/contact-notify` via `supabase_functions.http_request`
-- Uses Resend API to send email to owner address from `site_profile.email`
-- Env: `RESEND_API_KEY`, `NOTIFY_TO` (fallback if site_profile missing)
+- Calls `https://<project>.supabase.co/functions/v1/contact-notify` via `pg_net` (`net.http_post`)
+- Auth: custom `x-notify-secret` header (NOT an Authorization header — the Functions
+  gateway JWT-validates Authorization). Function deployed with `verify_jwt = false`
+  (`supabase/config.toml`).
+- Secret stored in private `app_settings` table (`notify_secret` key), matched against
+  function env `NOTIFY_SECRET`; trigger reads it via `public.app_settings` (security
+  definer function with empty search_path — all references schema-qualified).
+- Uses Resend API to send email to owner address from `NOTIFY_TO`
+- Env: `RESEND_API_KEY`, `NOTIFY_TO`, `NOTIFY_SECRET`
 - Failure handling: trigger fails silently (log only), message stays in DB.
 
 ## 6. Routing & i18n
@@ -188,6 +194,10 @@ All text content has `_en` / `_lv` variants. IDs are UUID. All content tables ha
 
 ## 7. Design System
 
+**`DESIGN.md` at repo root is the design source of truth** — tokens below are the
+same; detailed component styling rules (typography hierarchy, button/card states,
+nav behavior, do's & don'ts) live there. Coding agents must follow DESIGN.md §1–8.
+
 ### Theme: "Dark Techy, Purple Accent"
 
 | Token                 | Value                          |
@@ -201,7 +211,8 @@ All text content has `_en` / `_lv` variants. IDs are UUID. All content tables ha
 | accent                | `#8b5cf6` (violet-500)         |
 | accent-hover          | `#a78bfa` (violet-400)         |
 | accent-glow           | rgba(139, 92, 246, 0.35)       |
-| terminal-green        | `#4ade80` (flair only)         |
+| terminal-green        | `#4ade80` (decorative flair only; never interactive) |
+| danger                | `#f87171` (form errors)        |
 
 - Fonts: **Space Grotesk** (headings) + **JetBrains Mono** (monospace accents) + Inter (body) via `next/font/google`.
 - Motifs: subtle purple grid background, glow on hover, `$` terminal prompts in About/Hero, thin 1px borders with rounded-lg.
@@ -244,6 +255,7 @@ All text content has `_en` / `_lv` variants. IDs are UUID. All content tables ha
 | RESEND_API_KEY                 | Edge Function   |                                |
 | NOTIFY_TO                      | Edge Function   | owner email fallback           |
 | CRON_SECRET / REVALIDATE_SECRET| server          | reserved for v2 revalidation   |
+| CONTACT_TEST_MODE             | server (dev)    | "1" = form returns ok without insert (e2e/dev only) |
 
 `.env.local` for dev, Vercel env for prod, `supabase secrets set` for edge function.
 

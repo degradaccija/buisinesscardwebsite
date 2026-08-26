@@ -5,6 +5,7 @@ This repo is a **personal business-card website** for Mārcis Krēgers (fullstac
 ## Read first
 
 - `spec.md` — full technical spec (stack, schema, design tokens, requirements)
+- `DESIGN.md` — design source of truth for UI work (component styling, typography, do's & don'ts)
 - `tasks/` — one file per task with acceptance criteria. Work one task at a time, in order.
 - `CONTENT_TODO.md` — list of placeholder content to be filled by the owner later
 
