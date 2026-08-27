@@ -131,7 +131,7 @@ insert into projects (id, title, description_en, description_lv, image_url, repo
     'My always-on AI agent. It runs my home server day to day: restarting services, patching config files, automating daily checks, and debugging everything from Docker disk hogs to AirPlay freezes. Every tool call is logged to SQLite, so a failed run can be replayed and inspected step by step.',
     'Mans nepārtraukti strādājošais AI aģents. Tas katru dienu pārvalda manu serveri: restartē servisus, labo konfigurācijas failus, automatizē ikdienas pārbaudes un atkļūdo visu, sākot ar Docker vietas ēdājiem un beidzot ar AirPlay aizsalšanu. Katrs rīka izsaukums tiek saglabāts SQLite datubāzē, tāpēc neveiksmīgu palaišanu var atkārtot un izpētīt soli pa solim.',
     null,
-    null,
+    'https://github.com/degradaccija/hermes-homelab',
     null,
     array['AI agents', 'SQLite', 'Docker', 'Linux', 'systemd'],
     true,
