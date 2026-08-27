@@ -89,7 +89,7 @@ export function Hero({
             ) : null}
           </div>
         </div>
-        <div data-hero-visual className="relative mx-auto w-full max-w-[440px] lg:mt-16">
+        <div data-hero-visual className="relative mx-auto w-full max-w-[560px] lg:mt-16">
           <div
             aria-hidden="true"
             className="absolute -right-4 top-8 hidden h-full w-full rounded-xl border border-accent/40 lg:block"

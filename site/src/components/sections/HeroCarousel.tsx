@@ -31,7 +31,7 @@ export function HeroCarousel({
     <div
       role="group"
       aria-label={label}
-      className="relative aspect-[5/6] w-full overflow-hidden rounded-xl border border-border bg-surface"
+      className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-border bg-surface"
     >
       {slides.map((slide, i) => (
         <Image
@@ -40,7 +40,7 @@ export function HeroCarousel({
           alt={i === index ? slide.alt : ""}
           aria-hidden={i !== index}
           fill
-          sizes="(min-width: 448px) 440px, 100vw"
+          sizes="(min-width: 640px) 560px, 100vw"
           priority={i === 0}
           className={`object-cover transition-opacity duration-700 ease-fluid motion-reduce:transition-none ${
             i === index ? "opacity-100" : "opacity-0"
