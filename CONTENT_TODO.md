@@ -31,7 +31,7 @@ to find placeholder locations.
 - [x] `experience` education: Jelgavas tehnikums, 2022-09 → 2026-06, Datorsistēmu tehniķis / sistēmu administrators, LKI 4. līmenis (owner provided 2026-08-27)
 - [x] `experience` work history: 5 real entries (SIA OptiCore AI intern, Riga Fashion Week technical manager, Jelgavas Centra pamatskola IT intern, SIA Ogilvy sales, RTU IT intern) applied + verified live (owner provided 2026-08-27)
 - [x] Projects: real lineup shipped 2026-08-27 (Hermes featured, Homelab, This Website) - mined from Hermes agent logs + Perplexity memory; copy en/lv verified live
-- [ ] Projects: repo/live links (Hermes repo skeleton ready at `~/Documents/hermes/`; owner creates GitHub repo `hermes-homelab`, then push + set `repo_url` in Supabase and seed.sql)
+- [ ] Projects: repo/live links (Hermes done: github.com/degradaccija/hermes-homelab, live on card; remaining: optional live_url for This Website)
 - [x] Services: final wording EN/LV (Task 17, owner approved)
 - [ ] Skills levels (1–5) reviewed — current values are estimates
 

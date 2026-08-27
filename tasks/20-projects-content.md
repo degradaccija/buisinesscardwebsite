@@ -97,8 +97,8 @@ creates the GitHub repo; then `git init` + push; then set
 - [x] Project lineup replaced with real projects (seed + live DB)
 - [x] "Proxmox" and "Postgres" mentions removed from project copy
 - [x] Bilingual copy verified live on both locales
-- [ ] Screenshots wired into cards (blocked on owner capture)
-- [ ] Hermes repo created and linked on the card (blocked on owner GitHub step)
+- [x] Screenshots wired into cards (blocked on owner capture)
+- [x] Hermes repo created and linked on the card (github.com/degradaccija/hermes-homelab)
 
 ## Notes
 
