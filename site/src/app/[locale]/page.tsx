@@ -34,17 +34,29 @@ export default async function LocalePage({
     getServices(),
   ]);
 
-  const heroSlides = projects.flatMap((project) =>
-    project.featured && project.image_url
-      ? [
-          {
-            src: project.image_url,
-            title: project.title,
-            alt: dict.hero.slideAlt.replace("{project}", project.title),
-          },
-        ]
-      : [],
-  );
+  const heroSlides = [
+    ...projects.flatMap((project) =>
+      project.featured && project.image_url
+        ? [
+            {
+              src: project.image_url,
+              title: project.title,
+              alt: dict.hero.slideAlt.replace("{project}", project.title),
+            },
+          ]
+        : [],
+    ),
+    {
+      src: "/images/project-dashboard.jpg",
+      title: dict.hero.extraDashboard,
+      alt: dict.hero.slideAlt.replace("{project}", dict.hero.extraDashboard),
+    },
+    {
+      src: "/images/project-stats.jpg",
+      title: dict.hero.extraStats,
+      alt: dict.hero.slideAlt.replace("{project}", dict.hero.extraStats),
+    },
+  ];
 
   return (
     <main className="flex-1 overflow-x-hidden">

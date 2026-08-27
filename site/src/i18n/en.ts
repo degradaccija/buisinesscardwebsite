@@ -12,6 +12,8 @@ const en = {
     available: "Available for freelance & full-time work",
     carouselLabel: "Featured project screenshots",
     slideAlt: "Screenshot of {project}",
+    extraDashboard: "Hermes dashboard",
+    extraStats: "docker stats: 27 containers",
   },
   cta: {
     contact: "Get in touch",

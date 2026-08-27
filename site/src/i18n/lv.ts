@@ -14,6 +14,8 @@ const lv: typeof en = {
     available: "Pieejams freelance un pilnas slodzes darbam",
     carouselLabel: "Izcelto projektu ekrānattēli",
     slideAlt: "Attēls: {project}",
+    extraDashboard: "Hermes panelis",
+    extraStats: "docker stats: 27 konteineri",
   },
   cta: {
     contact: "Sazināties",
