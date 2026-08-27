@@ -14,22 +14,57 @@ to find placeholder locations.
       - Secrets set: RESEND_API_KEY, NOTIFY_TO (marcis.kregers@gmail.com), NOTIFY_SECRET
       - Secret synced to DB: `app_settings.notify_secret` row (insert via REST/service key)
       - Trigger verified end-to-end: insert → pg_net → function → Resend (status 200)
-- [ ] Vercel account (free tier) → import GitHub repo
-- [ ] GitHub repo for this project
+- [ ] Vercel account (free tier) → project live; confirm Git integration auto-deploys on push to main
+- [x] GitHub repo for this project (github.com/degradaccija/buisinesscardwebsite)
 
 ## Content placeholders (in `supabase/seed.sql`)
 
+- [ ] Apply approved Task 17 content to the live DB (tagline, bio, projects, services, education description + photo_url) — owner approved 2026-08-27; applied via REST after the redesigned build is live. Fresh installs get it from seed.sql directly.
+
 - [x] `site_profile.email` — real contact email (marcis.kregers@gmail.com)
-- [ ] `site_profile.photo_url` — professional photo
+- [x] `site_profile.photo_url` — portrait at `site/public/images/profile.jpg` (704x1521); seed + live DB point to `/images/profile.jpg`
 - [x] `site_profile.github_url` — GitHub profile URL (https://github.com/degradaccija)
 - [x] `site_profile.linkedin_url` — LinkedIn profile URL (https://lv.linkedin.com/in/marcis-kregers)
-- [ ] `site_profile.tagline_en/lv` — final tagline wording
-- [ ] `site_profile.bio_en/lv` — final bio text
-- [ ] `experience` education: exact school name, start/end dates, description
-- [ ] `experience` work history: company, dates, descriptions (extra rows welcomed)
-- [ ] Projects: real project titles, descriptions, repo/live links, images, tags
-- [ ] Services: final wording EN/LV
+- [x] `site_profile.tagline_en/lv` — final copy (Task 17, owner approved)
+- [x] `site_profile.bio_en/lv` — final copy (Task 17, owner approved)
+- [x] `experience` education description — final copy (Task 17, owner approved)
+- [ ] `experience` education: exact school name, start/end dates (school name unverified, kept as `[TODO: CONTENT]` in seed.sql; owner confirms)
+- [ ] `experience` work history: company, dates, descriptions (row kept as `[TODO: CONTENT]` in seed.sql, no invented employer)
+- [x] Projects: titles, descriptions, tags — final copy (Task 17, owner approved)
+- [ ] Projects: repo/live links (kept null in seed.sql, owner fills real links)
+- [x] Services: final wording EN/LV (Task 17, owner approved)
 - [ ] Skills levels (1–5) reviewed — current values are estimates
+
+## Asset requests (image slots)
+
+Decision 2026-08-27: project cards ship with the monogram-style fallback
+(`image_url` null) until real screenshots exist. Owner decision — no interim
+picsum placeholders. Drop files in `site/public/images/`, then set
+`projects.image_url` in Supabase and/or update `supabase/seed.sql`.
+
+- [x] P0 - owner portrait: done, `site/public/images/profile.jpg` (704x1521).
+      Hero and About render it via `next/image` (hero has `priority`).
+- [ ] P1 - real project screenshots, one per project
+      - Slot: project cards. Featured card image top: aspect 16/10, full-bleed,
+        renders 896x560 @1x, `object-cover`, hover `scale-105`; grid tiles
+        render 40vw.
+      - Dimensions: 1600x1000 (16/10) preferred, 1200x900 acceptable.
+      - Style: real screenshots of the actual software, dark UI to sit in the
+        dark theme, no browser chrome, no watermarks, no phone mockups:
+        - Agent Logbook: agent run inspector, tool-call trace list with detail
+        - Homelab: Proxmox dashboard or the server rack in a dark room
+        - This Website: this site's hero section in a browser frame
+- [ ] P2 - optional workspace shot for the About visual slot
+      - Slot: About visual, aspect 7/5, renders 1120x800 @1x, `object-cover`
+        with `object-[center_20%]`.
+      - Dimensions: 1400x1000 (7/5). Style: desk/workspace at work,
+        warm-violet duotone grade, shallow depth of field (board-02).
+- [ ] P3 - optional portrait reshoot for the hero visual slot
+      - Current photo is vertical 704x1521; the hero slot is aspect 5/6 and
+        crops with `object-cover` (default center), so the vertical shot
+        already works. A 4/5-grade crop (1200x1500 per board-01, duotone
+        violet grade, subject right of center) would fill the frame with less
+        cropping. Low priority.
 
 ## After deployment
 

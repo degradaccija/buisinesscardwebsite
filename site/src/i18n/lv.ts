@@ -8,36 +8,58 @@ const lv: typeof en = {
     projects: "Projekti",
     services: "Pakalpojumi",
     contact: "Kontakti",
+    menu: "Izvēlne",
   },
   hero: {
-    available: "Pieejams freelance un pilna laika darbam",
-    ctaContact: "Sazināties",
+    available: "Pieejams freelance un pilnas slodzes darbam",
+  },
+  cta: {
+    contact: "Sazināties",
   },
   about: {
-    terminalTitle: "profile.txt",
-    terminalCommand: "whoami",
-    terminalLine: "Linux eksperts · aparatūras entuziasts",
+    facts: {
+      role: "Loma",
+      focus: "Fokuss",
+      languages: "Valodas",
+    },
+    focusValue: "Pilna cikla web izstrāde, AI aģenti",
+    languagesValue: "Latviešu, angļu",
+    cv: "Lejupielādēt CV",
+  },
+  skills: {
+    note: "Līmeņus L1-L5 novērtēju pats.",
+    countOne: "prasme",
+    countOther: "prasmes",
   },
   experience: {
     present: "Šobrīd",
-    work: "Darba pieredze",
-    education: "Izglītība",
+    groupWork: "Darbs",
+    groupEducation: "Izglītība",
   },
   projects: {
+    featured: "Izceltie",
+    caseStudy: "Gadījuma pētījums",
     repo: "Kods",
-    live: "Tiešsaistē",
+    live: "Skatīt tiešsaistē",
   },
   contact: {
-    emailMe: "Vai raksti man tieši uz e-pastu",
+    title: "Sazināties",
+    channels: {
+      email: "E-pasts",
+      github: "GitHub",
+      linkedin: "LinkedIn",
+    },
+    note: "Tiešā saziņa ir ātrākā. Veidlapa nonāk tieši manā e-pastā. Bez CRM sistēmām un automatizētiem e-pastiem. Tavu ziņu izlasu es.",
     form: {
       name: "Vārds",
       email: "E-pasts",
       message: "Ziņa",
       send: "Sūtīt",
       sending: "Sūta…",
-      success: "Ziņa nosūtīta — drīz sazināšos ar jums.",
+      success: "Ziņa nosūtīta. Drīz sazināšos ar tevi.",
       error: "Kaut kas nogāja greizi. Lūdzu, mēģini vēlreiz.",
-      invalid: "Lūdzu, pārbaudi veidlapu — visi lauki ir obligāti un e-pastam jābūt derīgam.",
+      invalid: "Lūdzu, pārbaudi veidlapu: visi lauki ir obligāti un e-pastam jābūt derīgam.",
+      hint: "Parasti atbildu 48 stundu laikā.",
     },
   },
   footer: {
@@ -48,9 +70,9 @@ const lv: typeof en = {
     body: "Sadaļas drīzumā.",
   },
   meta: {
-    title: "Mārcis Krēgers — Pilna cikla web izstrādātājs un AI inženieris",
+    title: "Mārcis Krēgers | Pilna cikla web izstrādātājs un AI inženieris",
     description:
-      "Pilna cikla web izstrādātājs un AI/aģentu inženieris. Veidoju mūsdienīgas web lietotnes, AI aģentus un rūpējos par Linux sistēmām. Pieejams freelance un pilna laika darbam.",
+      "Pilna cikla web izstrādātājs un AI/aģentu inženieris no Latvijas. Veidoju web lietotnes ar React un Next.js, uzturu Linux serverus un automatizēju darbu ar AI aģentiem.",
   },
   skipLink: "Izlaist uz saturu",
 };

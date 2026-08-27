@@ -10,7 +10,7 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`scroll-mt-24 py-24 ${className ?? ""}`}>
+    <section id={id} className={`scroll-mt-24 py-32 md:py-48 ${className ?? ""}`}>
       {children}
     </section>
   );

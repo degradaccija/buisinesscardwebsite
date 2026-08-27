@@ -5,6 +5,7 @@ import type { Locale, SiteProfile } from "@/lib/types";
 import { Button } from "@/components/ui/Button";
 import { Monogram } from "@/components/ui/Monogram";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
+import { HeroMotion } from "@/components/sections/HeroMotion";
 
 export function Hero({
   locale,
@@ -30,22 +31,37 @@ export function Hero({
   const tagline = locale === "en" ? profile.tagline_en : profile.tagline_lv;
 
   return (
-    <section id="top" className="flex min-h-[calc(100vh-4rem)] items-center py-16">
-      <div className="grid w-full items-center gap-12 md:grid-cols-[1fr_auto]">
+    <section id="top" className="relative">
+      <HeroMotion className="grid min-h-[calc(100dvh-4.5rem)] items-center gap-16 py-16 lg:grid-cols-[7fr_5fr] lg:gap-20 lg:py-24">
         <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 font-mono text-xs text-text-muted">
-            <span className="h-2 w-2 rounded-full bg-terminal" />
+          <p
+            data-hero-eyebrow
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 font-mono text-xs text-text-muted"
+          >
+            <span className="h-2 w-2 rounded-full bg-success" aria-hidden="true" />
             {dict.hero.available}
           </p>
-          <h1 className="mt-6 font-display text-4xl font-bold tracking-tight md:text-6xl">
+          <h1
+            data-hero-headline
+            className="mt-8 font-display text-[clamp(2.75rem,6vw,5.5rem)] font-bold leading-[1.05] tracking-[-0.02em] text-balance after:text-accent after:content-['.']"
+          >
             {profile.name}
           </h1>
-          <p className="mt-3 font-mono text-lg text-accent md:text-xl">{role}</p>
-          {tagline ? <p className="mt-4 max-w-xl text-text-muted">{tagline}</p> : null}
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <p data-hero-role className="mt-5 font-mono text-base text-accent md:text-lg">
+            {role}
+          </p>
+          {tagline ? (
+            <p
+              data-hero-tagline
+              className="mt-5 max-w-[480px] text-pretty text-text-muted"
+            >
+              {tagline}
+            </p>
+          ) : null}
+          <div data-hero-ctas className="mt-9 flex flex-wrap items-center gap-4">
             <Button href="#contact">
-              {dict.hero.ctaContact}
-              <ArrowRight className="h-4 w-4" />
+              {dict.cta.contact}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Button>
             {profile.github_url ? (
               <Button
@@ -71,21 +87,25 @@ export function Hero({
             ) : null}
           </div>
         </div>
-        <div>
+        <div data-hero-visual className="relative mx-auto w-full max-w-[440px] lg:mt-16">
+          <div
+            aria-hidden="true"
+            className="absolute -right-4 top-8 hidden h-full w-full rounded-xl border border-accent/40 lg:block"
+          />
           {profile.photo_url ? (
             <Image
               src={profile.photo_url}
               alt={profile.name}
-              width={224}
-              height={224}
-              className="rounded-lg border border-border object-cover"
+              width={440}
+              height={528}
               priority
+              className="relative aspect-[5/6] w-full rounded-xl border border-border object-cover"
             />
           ) : (
-            <Monogram className="h-40 w-40 text-5xl md:h-56 md:w-56" />
+            <Monogram className="relative aspect-[5/6] w-full text-6xl" />
           )}
         </div>
-      </div>
+      </HeroMotion>
     </section>
   );
 }

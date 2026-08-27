@@ -1,20 +1,11 @@
-export function SectionTitle({
-  index,
-  title,
-  subtitle,
-}: {
-  index: string;
-  title: string;
-  subtitle?: string;
-}) {
+export function SectionTitle({ title, body }: { title: string; body?: string }) {
   return (
-    <div className="mb-10">
-      <p className="font-mono text-xs uppercase tracking-wider text-accent">
-        {index}. {"//"} {title.toLowerCase()}
-      </p>
-      <h2 className="mt-2 font-display text-2xl font-bold md:text-4xl">{title}</h2>
-      {subtitle ? (
-        <p className="mt-3 max-w-2xl text-text-muted">{subtitle}</p>
+    <div className="mb-12">
+      <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.1] tracking-[-0.01em] text-balance">
+        {title}
+      </h2>
+      {body ? (
+        <p className="mt-4 max-w-prose text-text-muted text-pretty">{body}</p>
       ) : null}
     </div>
   );

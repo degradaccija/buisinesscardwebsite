@@ -35,7 +35,7 @@ export default async function LocalePage({
   ]);
 
   return (
-    <main className="flex-1">
+    <main className="flex-1 overflow-x-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <Hero locale={locale} dict={dict} profile={profile} />
         <About locale={locale} dict={dict} profile={profile} />

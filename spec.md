@@ -30,7 +30,7 @@ Non-functional goals:
 ### Sections (single page, smooth scroll)
 
 1. **Hero** — name, role, tagline, primary CTA (contact), quick links (GitHub/LinkedIn)
-2. **About** — short bio, photo, terminal-style "whoami" flair
+2. **About** — short bio, photo, facts panel (no fake terminal)
 3. **Skills** — grouped by category, with level indicator
 4. **Experience / CV** — work history + education, timeline layout
 5. **Projects** — cards with title, description, tags, repo/live links
@@ -43,6 +43,7 @@ Non-functional goals:
 |------------|-----------------------------------------------|-------------------------------|
 | Framework  | Next.js 16 (App Router), React 19, TypeScript | —                            |
 | Styling    | Tailwind CSS 4 (CSS-first config via @theme)  | —                             |
+| Motion     | GSAP + @gsap/react + ScrollTrigger            | —                             |
 | Hosting    | Vercel                                        | Hobby plan                    |
 | CMS / DB   | Supabase (Postgres)                           | 500 MB DB, generous limits    |
 | Email      | Resend + Supabase Edge Function               | 3000 emails/mo                |
@@ -194,11 +195,12 @@ All text content has `_en` / `_lv` variants. IDs are UUID. All content tables ha
 
 ## 7. Design System
 
-**`DESIGN.md` at repo root is the design source of truth** — tokens below are the
-same; detailed component styling rules (typography hierarchy, button/card states,
-nav behavior, do's & don'ts) live there. Coding agents must follow DESIGN.md §1–8.
+**`DESIGN.md` at repo root is the design source of truth (v2)** - tokens below are the
+same; detailed component styling rules (typography hierarchy, button/card
+states, nav behavior, motion language, bans) live there. Coding agents must
+follow DESIGN.md v2. Tasks 11-16 implement it.
 
-### Theme: "Dark Techy, Purple Accent"
+### Theme: "Dark Violet, Elevated Tech"
 
 | Token                 | Value                          |
 |-----------------------|--------------------------------|
@@ -208,15 +210,20 @@ nav behavior, do's & don'ts) live there. Coding agents must follow DESIGN.md §1
 | border                | `#2a2a45`                      |
 | text-primary          | `#e8e8f0`                      |
 | text-muted            | `#9a9ab0`                      |
-| accent                | `#8b5cf6` (violet-500)         |
-| accent-hover          | `#a78bfa` (violet-400)         |
-| accent-glow           | rgba(139, 92, 246, 0.35)       |
-| terminal-green        | `#4ade80` (decorative flair only; never interactive) |
+| accent                | `#8f7ce6` (links, icons, borders, focus) |
+| accent-hover          | `#a48ff5` (link hover)         |
+| accent-strong         | `#7c5ce0` (filled CTA background) |
+| accent-glow           | rgba(140, 122, 240, 0.28)      |
+| success               | `#4ade80` (semantic positive states only) |
 | danger                | `#f87171` (form errors)        |
 
-- Fonts: **Space Grotesk** (headings) + **JetBrains Mono** (monospace accents) + Inter (body) via `next/font/google`.
-- Motifs: subtle purple grid background, glow on hover, `$` terminal prompts in About/Hero, thin 1px borders with rounded-lg.
-- Section titles: monospace prefix like `01. // about` (terminal feel).
+- Fonts: **Space Grotesk** (headings) + **Geist** (body) + **JetBrains Mono** (monospace labels) via `next/font/google`.
+- Motifs: hairline 1px borders, desaturated violet accent family, glow only at
+  two page-wide moments (primary CTA hover, featured project card), hero-only
+  grid ambience at very low opacity. No fake terminals, no `$` prompts, no
+  numbered section prefixes.
+- Motion: GSAP + ScrollTrigger per DESIGN.md §7 (one pinned setpiece, staggered
+  reveals, transform/opacity only, reduced-motion collapses to static).
 - Accessibility: WCAG AA contrast, focus-visible rings in accent color, semantic HTML, `prefers-reduced-motion` respected.
 - Tokens are defined once in `src/app/globals.css` via Tailwind 4 `@theme` (no `tailwind.config.ts`).
 
@@ -224,11 +231,11 @@ nav behavior, do's & don'ts) live there. Coding agents must follow DESIGN.md §1
 
 `src/components/`:
 
-- `Nav` — sticky, logo monogram "MK", section links, language toggle
+- `Nav` - sticky, logo monogram "MK", section links, language toggle
 - `Hero`, `About`, `Skills`, `Experience`, `Projects`, `Services`, `Contact`
-- `Section` (wrapper: id, title, terminal prefix), `SectionTitle`
-- `ProjectCard`, `SkillBar`, `ServiceCard`, `TimelineItem`, `ContactForm`
-- `Terminal` (decorative), `Button`, `Badge`/`Tag`, `GlowCard`
+- `Section` (wrapper: id, title), `SectionTitle` (no numbering)
+- `ProjectCard`, `ServiceCard`, `TimelineItem`, `ContactForm`
+- `Button`, `Badge`/`Tag`, `Monogram`, surface cards (no glow-on-every-card)
 
 ## 8. Contact Form Behavior
 

@@ -84,4 +84,17 @@ test.describe("language toggle", () => {
     expect(localeCookie?.value).toBe("en");
     expectNoPageErrors(errors);
   });
+
+  test("locale choice persists across a reload", async ({ page, context }) => {
+    const errors = collectPageErrors(page);
+    await page.goto("/en");
+    await page.locator("header a[href='/lv']").click();
+    await expect(page).toHaveURL(/\/lv$/);
+    await page.reload();
+    await expect(page).toHaveURL(/\/lv$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "lv");
+    const localeCookie = (await context.cookies()).find((c) => c.name === "NEXT_LOCALE");
+    expect(localeCookie?.value).toBe("lv");
+    expectNoPageErrors(errors);
+  });
 });

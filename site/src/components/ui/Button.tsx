@@ -3,11 +3,11 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "reac
 type Variant = "primary" | "ghost";
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-lg border px-5 py-2.5 font-mono text-sm font-medium transition-all";
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-[border-color,background-color,box-shadow,transform] duration-200 ease-snap active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50";
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "border-accent bg-accent text-white hover:bg-accent-hover hover:shadow-[0_0_24px_var(--color-accent-glow)]",
+    "border-accent-strong bg-accent-strong text-white hover:border-accent hover:shadow-[0_0_24px_var(--color-accent-glow)]",
   ghost:
     "border-border bg-transparent text-text-primary hover:border-accent/40 hover:bg-surface-2",
 };

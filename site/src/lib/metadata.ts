@@ -27,7 +27,7 @@ export async function buildMetadata(
       ? profile.tagline_en
       : profile.tagline_lv
     : "";
-  const title = profile && role ? `${profile.name} — ${role}` : dict.meta.title;
+  const title = profile && role ? `${profile.name} | ${role}` : dict.meta.title;
   const description =
     profile && tagline.trim().length > 0 ? tagline : dict.meta.description;
   const url = `${siteBaseUrl()}/${locale}`;

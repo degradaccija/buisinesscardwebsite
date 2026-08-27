@@ -8,13 +8,25 @@ import type { Locale } from "@/lib/types";
 import { Button } from "@/components/ui/Button";
 
 type Status = "idle" | "sending" | "success" | "error";
+type FieldName = "name" | "email" | "message";
 
-const inputBaseClasses =
-  "w-full rounded-lg border bg-surface px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40";
+const fieldBaseClasses =
+  "w-full rounded-xl border bg-surface px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted transition-colors focus:outline-none focus:ring-2";
+const fieldIdleClasses = "border-border focus:border-accent focus:ring-accent/40";
+const fieldErrorClasses = "border-danger focus:border-danger focus:ring-danger/40";
+const labelClasses =
+  "mb-2 block font-mono text-xs font-medium tracking-[0.04em] text-text-muted";
+
+const EMPTY_FIELD_ERRORS: Record<FieldName, boolean> = {
+  name: false,
+  email: false,
+  message: false,
+};
 
 export function ContactForm({ locale, dict }: { locale: Locale; dict: Dict }) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<"error" | "invalid">("error");
+  const [fieldErrors, setFieldErrors] = useState(EMPTY_FIELD_ERRORS);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,9 +41,11 @@ export function ContactForm({ locale, dict }: { locale: Locale; dict: Dict }) {
     if (!name || !emailValid || !text) {
       setMessage("invalid");
       setStatus("error");
+      setFieldErrors({ name: !name, email: !emailValid, message: !text });
       return;
     }
 
+    setFieldErrors(EMPTY_FIELD_ERRORS);
     setMessage("error");
     setStatus("sending");
     try {
@@ -57,23 +71,29 @@ export function ContactForm({ locale, dict }: { locale: Locale; dict: Dict }) {
     }
   }
 
-  const inputClasses = `${inputBaseClasses} ${
-    status === "error" ? "border-danger" : "border-border"
-  }`;
+  const fieldClasses = (hasError: boolean) =>
+    `${fieldBaseClasses} ${hasError ? fieldErrorClasses : fieldIdleClasses}`;
 
   if (status === "success") {
     return (
-      <div className="flex items-start gap-3 rounded-lg border border-terminal/50 bg-surface p-6">
-        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-terminal" />
-        <p className="text-sm text-text-primary">{dict.contact.form.success}</p>
+      <div
+        role="status"
+        className="flex items-start gap-3 rounded-xl border border-success/50 bg-surface p-6"
+      >
+        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-success" aria-hidden="true" />
+        <p className="text-sm leading-relaxed text-text-primary">
+          {dict.contact.form.success}
+        </p>
       </div>
     );
   }
 
+  const hasError = status === "error";
+
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-4">
-      <div>
-        <label htmlFor="contact-name" className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-text-muted">
+    <form onSubmit={onSubmit} noValidate className="space-y-5">
+      <div data-contact-field>
+        <label htmlFor="contact-name" className={labelClasses}>
           {dict.contact.form.name}
         </label>
         <input
@@ -83,11 +103,12 @@ export function ContactForm({ locale, dict }: { locale: Locale; dict: Dict }) {
           required
           maxLength={100}
           autoComplete="name"
-          className={inputClasses}
+          aria-invalid={fieldErrors.name || undefined}
+          className={fieldClasses(fieldErrors.name)}
         />
       </div>
-      <div>
-        <label htmlFor="contact-email" className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-text-muted">
+      <div data-contact-field>
+        <label htmlFor="contact-email" className={labelClasses}>
           {dict.contact.form.email}
         </label>
         <input
@@ -97,11 +118,12 @@ export function ContactForm({ locale, dict }: { locale: Locale; dict: Dict }) {
           required
           maxLength={200}
           autoComplete="email"
-          className={inputClasses}
+          aria-invalid={fieldErrors.email || undefined}
+          className={fieldClasses(fieldErrors.email)}
         />
       </div>
-      <div>
-        <label htmlFor="contact-message" className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-text-muted">
+      <div data-contact-field>
+        <label htmlFor="contact-message" className={labelClasses}>
           {dict.contact.form.message}
         </label>
         <textarea
@@ -110,8 +132,19 @@ export function ContactForm({ locale, dict }: { locale: Locale; dict: Dict }) {
           required
           maxLength={5000}
           rows={5}
-          className={inputClasses}
+          aria-invalid={fieldErrors.message || undefined}
+          aria-describedby={hasError ? "contact-form-error" : "contact-message-hint"}
+          className={`${fieldClasses(fieldErrors.message)} resize-y`}
         />
+        {hasError ? (
+          <p id="contact-form-error" role="alert" className="mt-2 text-sm text-danger">
+            {message === "invalid" ? dict.contact.form.invalid : dict.contact.form.error}
+          </p>
+        ) : (
+          <p id="contact-message-hint" className="mt-2 font-mono text-xs tracking-[0.04em] text-text-muted">
+            {dict.contact.form.hint}
+          </p>
+        )}
       </div>
       <input
         type="text"
@@ -119,19 +152,13 @@ export function ContactForm({ locale, dict }: { locale: Locale; dict: Dict }) {
         tabIndex={-1}
         autoComplete="off"
         className="hidden"
-        style={{ caretColor: "transparent" }}
         aria-hidden="true"
       />
-      <div>
-        <Button type="submit" disabled={status === "sending"}>
+      <div data-contact-field>
+        <Button type="submit" disabled={status === "sending"} className="w-full sm:w-auto">
           {status === "sending" ? dict.contact.form.sending : dict.contact.form.send}
-          <Send className="h-4 w-4" />
+          <Send className="h-4 w-4" aria-hidden="true" />
         </Button>
-        {status === "error" ? (
-          <p className="mt-3 text-sm text-danger" role="alert">
-            {message === "invalid" ? dict.contact.form.invalid : dict.contact.form.error}
-          </p>
-        ) : null}
       </div>
     </form>
   );

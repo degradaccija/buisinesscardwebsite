@@ -1,4 +1,4 @@
--- seed.sql — idempotent seed data (safe to re-run; placeholders marked [TODO: CONTENT])
+-- seed.sql - idempotent seed data (safe to re-run; placeholders marked [TODO: CONTENT])
 
 -- site_profile (single fixed row)
 insert into site_profile (id, name, role_en, role_lv, tagline_en, tagline_lv, bio_en, bio_lv, photo_url, email, github_url, linkedin_url, resume_url)
@@ -7,11 +7,11 @@ values (
   'Mārcis Krēgers',
   'Fullstack Web Developer & AI Engineer',
   'Pilna cikla web izstrādātājs un AI inženieris',
-  '[TODO: CONTENT] I build modern web apps and AI agents that get things done.',
-  '[TODO: CONTENT] Es veidoju mūsdienīgas web lietotnes un AI aģentus, kas paveic darbu.',
-  '[TODO: CONTENT] Fullstack developer with a system administrator background. Linux expert at heart, hardware enthusiast in spare time — I fix computers, build apps, and teach machines to work.',
-  '[TODO: CONTENT] Pilna cikla izstrādātājs ar sistēmu administratora izglītību. Linux eksperts pēc būtības, aparatūras entuziasts brīvajā laikā — remontēju datorus, veidoju lietotnes un mācu mašīnām strādāt.',
-  null,
+  'Building web apps, AI agents, and Linux systems. Fixing computers.',
+  'Veidoju web lietotnes un AI aģentus, uzturu Linux sistēmas, remontēju datorus.',
+  'I trained as a computer systems technician, and Linux has been my daily driver ever since. I build web apps with React, Next.js, and TypeScript, plus AI agents that automate the repetitive parts of development and server upkeep. In my free time I repair laptops and desktops, from diagnostics to replacement parts.',
+  'Esmu izmācījies par datorsistēmu tehniķi, un kopš tā laika ar Linux strādāju ik dienas. Veidoju web lietotnes ar React, Next.js un TypeScript, kā arī AI aģentus, kas automatizē atkārtoto darbu izstrādē un serveru uzturēšanā. Brīvajā laikā remontēju portatīvos un galddatorus, sākot ar diagnostiku un beidzot ar detaļu nomaiņu.',
+  '/images/profile.jpg',
   'marcis.kregers@gmail.com',
   'https://github.com/degradaccija',
   'https://lv.linkedin.com/in/marcis-kregers',
@@ -48,12 +48,12 @@ insert into experience (id, type, title_en, title_lv, organization_en, organizat
     'education',
     'Computer Systems Technician / System Administrator',
     'Datorsistēmu tehniķis / sistēmu administrators',
-    '[TODO: CONTENT] Jelgava vocational school',
-    '[TODO: CONTENT] Jelgavas profesionālā skola',
+    '[TODO: CONTENT] Vocational school in Jelgava',
+    '[TODO: CONTENT] Profesionālā skola Jelgavā',
     null,
     null,
-    '[TODO: CONTENT] Vocational education in computer systems and system administration: hardware, networking, operating systems, and IT infrastructure.',
-    '[TODO: CONTENT] Profesionālā izglītība datorsistēmu un sistēmu administrēšanas jomā: aparatūra, tīkli, operētājsistēmas un IT infrastruktūra.',
+    'Vocational training in computer systems and system administration. The program covered hardware, networking, operating systems, and IT infrastructure.',
+    'Profesionālā izglītība datorsistēmu un sistēmu administrēšanas jomā. Programma aptvēra aparatūru, tīklus, operētājsistēmas un IT infrastruktūru.',
     10
   ),
   (
@@ -75,37 +75,37 @@ on conflict (id) do nothing;
 insert into projects (id, title, description_en, description_lv, image_url, repo_url, live_url, tags, featured, sort_order) values
   (
     '00000000-0000-4000-8000-000000000301',
-    '[TODO: CONTENT] Project one',
-    '[TODO: CONTENT] What it does, your role, the outcome.',
-    '[TODO: CONTENT] Ko tas dara, tava loma, rezultāts.',
+    'Agent Logbook',
+    'A local tool for running and inspecting AI agents. Every tool call, prompt, and result goes to Postgres, so a failed run can be replayed and debugged step by step. I built it for my own agent work and use it daily.',
+    'Lokāls rīks AI aģentu palaišanai un pārbaudei. Katrs rīka izsaukums, uzvedne un rezultāts nonāk Postgres datubāzē, tāpēc neveiksmīgu palaišanu var atkārtot un izpētīt soli pa solim. Uzbūvēju to savam darbam ar aģentiem un lietoju ik dienas.',
     null,
     null,
     null,
-    array['[TODO: CONTENT]', 'tech'],
+    array['TypeScript', 'Node.js', 'PostgreSQL', 'AI agents'],
     true,
     1
   ),
   (
     '00000000-0000-4000-8000-000000000302',
-    '[TODO: CONTENT] Project two',
-    '[TODO: CONTENT] What it does, your role, the outcome.',
-    '[TODO: CONTENT] Ko tas dara, tava loma, rezultāts.',
+    'Homelab',
+    'My home server lab: Proxmox running containers and virtual machines for development, backups, and self-hosted services. I plan, run, and harden it myself, and it doubles as the test environment for most of my projects.',
+    'Mans homelab: Proxmox ar konteineriem un virtuālajām mašīnām izstrādei, dublējumkopijām un pašmitinātiem pakalpojumiem. Plānoju, palaižu un nostiprinu to pats, un tas kalpo kā testa vide lielākajai daļai manu projektu.',
     null,
     null,
     null,
-    array['[TODO: CONTENT]', 'tech'],
+    array['Linux', 'Docker', 'Proxmox', 'Networking'],
     false,
     2
   ),
   (
     '00000000-0000-4000-8000-000000000303',
-    '[TODO: CONTENT] Project three',
-    '[TODO: CONTENT] What it does, your role, the outcome.',
-    '[TODO: CONTENT] Ko tas dara, tava loma, rezultāts.',
+    'This Website',
+    'The site you are reading. A bilingual business card built with Next.js 16, Tailwind, and Supabase as the CMS. All content lives in Postgres and is read at build time, so the page ships as static HTML.',
+    'Vietne, kuru šobrīd lasi. Divvalodu vizītkarte, būvēta ar Next.js 16, Tailwind un Supabase kā satura pārvaldības sistēmu. Viss saturs atrodas Postgres datubāzē un tiek ielasīts būvēšanas laikā, tāpēc lapa tiek izsniegta kā statisks HTML.',
     null,
     null,
     null,
-    array['[TODO: CONTENT]', 'tech'],
+    array['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],
     false,
     3
   )
@@ -117,8 +117,8 @@ insert into services (id, title_en, title_lv, description_en, description_lv, ic
     '00000000-0000-4000-8000-000000000401',
     'Web development',
     'Web izstrāde',
-    '[TODO: CONTENT] Custom websites and web apps, from first sketch to deployment.',
-    '[TODO: CONTENT] Pielāgotas mājaslapas un web lietotnes — no pirmās skices līdz palaišanai.',
+    'Websites and web apps with React, Next.js, and TypeScript. I take a project from first design to a deployed and maintained site.',
+    'Mājaslapas un web lietotnes ar React, Next.js un TypeScript. Projektu vedu no pirmā dizaina līdz izvietotai un uzturētai vietnei.',
     'Code2',
     1
   ),
@@ -126,8 +126,8 @@ insert into services (id, title_en, title_lv, description_en, description_lv, ic
     '00000000-0000-4000-8000-000000000402',
     'AI agents & automation',
     'AI aģenti un automatizācija',
-    '[TODO: CONTENT] AI-powered agents and workflows that automate repetitive work.',
-    '[TODO: CONTENT] AI aģenti un darbplūsmas, kas automatizē rutīnas darbu.',
+    'Agents and automation scripts that handle repetitive work, such as data entry, report generation, and inbox triage. I build the workflow, wire the tools, and test the result on your real data.',
+    'Aģenti un automatizācijas skripti, kas pārņem rutīnas darbus, piemēram, datu ievadi, atskaišu ģenerēšanu un e-pastu šķirošanu. Uzbūvēju darbplūsmu, pieslēdzu rīkus un pārbaudu rezultātu uz taviem reālajiem datiem.',
     'Bot',
     2
   ),
@@ -135,8 +135,8 @@ insert into services (id, title_en, title_lv, description_en, description_lv, ic
     '00000000-0000-4000-8000-000000000403',
     'Linux & server administration',
     'Linux un serveru administrēšana',
-    '[TODO: CONTENT] Server setup, maintenance and hardening on Linux.',
-    '[TODO: CONTENT] Serveru uzstādīšana, uzturēšana un drošības nostiprināšana uz Linux.',
+    'Setup, maintenance, and hardening of Linux servers. From a fresh VPS to scheduled backups, monitoring, and updates.',
+    'Linux serveru uzstādīšana, uzturēšana un drošības nostiprināšana. No jauna VPS līdz ieplānotām dublējumkopijām, uzraudzībai un atjauninājumiem.',
     'Terminal',
     3
   ),
@@ -144,8 +144,8 @@ insert into services (id, title_en, title_lv, description_en, description_lv, ic
     '00000000-0000-4000-8000-000000000404',
     'IT infrastructure & networking',
     'IT infrastruktūra un tīkli',
-    '[TODO: CONTENT] Networks, workstations and IT infrastructure that just work.',
-    '[TODO: CONTENT] Tīkli, darbstacijas un IT infrastruktūra, kas vienkārši strādā.',
+    'Network and workstation setup for homes and small offices. Routers, Wi-Fi, switches, and wired runs, configured and documented.',
+    'Tīklu un darbstaciju uzstādīšana mājām un maziem birojiem. Maršrutētāji, Wi-Fi, komutatori un kabeļu līnijas. Viss nokonfigurēts un dokumentēts.',
     'Server',
     4
   ),
@@ -153,8 +153,8 @@ insert into services (id, title_en, title_lv, description_en, description_lv, ic
     '00000000-0000-4000-8000-000000000405',
     'Tech repair & consulting',
     'Tehnikas remonts un konsultācijas',
-    '[TODO: CONTENT] Hardware diagnostics, repair advice and honest tech consulting.',
-    '[TODO: CONTENT] Aparatūras diagnostika, remonta padomi un godīgas tehnoloģiju konsultācijas.',
+    'Hardware diagnostics and repair for laptops and desktops, plus practical advice on what to buy and when to replace instead of repair.',
+    'Portatīvo un galddatoru aparatūras diagnostika un remonts, kā arī praktiski padomi: ko pirkt un kad labāk nomainīt, nevis labot.',
     'Wrench',
     5
   )

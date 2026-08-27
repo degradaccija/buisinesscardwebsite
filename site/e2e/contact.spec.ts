@@ -7,8 +7,8 @@ const EN = {
   message: "Message",
   send: "Send",
   error: "Something went wrong. Please try again.",
-  invalid: "Please check the form — all fields are required and the email must be valid.",
-  success: "Message sent — I'll get back to you soon.",
+  invalid: "Please check the form: all fields are required and the email must be valid.",
+  success: "Message sent. I'll get back to you soon.",
 };
 
 const LV = {
@@ -17,8 +17,8 @@ const LV = {
   message: "Ziņa",
   send: "Sūtīt",
   error: "Kaut kas nogāja greizi. Lūdzu, mēģini vēlreiz.",
-  invalid: "Lūdzu, pārbaudi veidlapu — visi lauki ir obligāti un e-pastam jābūt derīgam.",
-  success: "Ziņa nosūtīta — drīz sazināšos ar jums.",
+  invalid: "Lūdzu, pārbaudi veidlapu: visi lauki ir obligāti un e-pastam jābūt derīgam.",
+  success: "Ziņa nosūtīta. Drīz sazināšos ar tevi.",
 };
 
 test.skip(({ isMobile }) => isMobile, "desktop only, keeps /api/contact rate limit budget");
@@ -71,6 +71,45 @@ test.describe("contact form", () => {
     await page.locator("#contact-message").fill("Sveiki no QA");
     await page.getByRole("button", { name: LV.send }).click();
     await expect(page.getByText(LV.invalid)).toBeVisible();
+    expectNoPageErrors(errors);
+  });
+
+  test("empty submit marks every field invalid", async ({ page }) => {
+    const errors = collectPageErrors(page);
+    await page.goto("/en");
+    await page.getByRole("button", { name: EN.send }).click();
+    await expect(page.getByText(EN.invalid)).toBeVisible();
+    await expect(page.locator("#contact-name")).toHaveAttribute("aria-invalid", "true");
+    await expect(page.locator("#contact-email")).toHaveAttribute("aria-invalid", "true");
+    await expect(page.locator("#contact-message")).toHaveAttribute("aria-invalid", "true");
+    expectNoPageErrors(errors);
+  });
+
+  test("invalid email marks only the email field invalid", async ({ page }) => {
+    const errors = collectPageErrors(page);
+    await page.goto("/en");
+    await page.locator("#contact-name").fill("QA Tester");
+    await page.locator("#contact-message").fill("Hello from QA");
+    await page.locator("#contact-email").fill("not-an-email");
+    await page.getByRole("button", { name: EN.send }).click();
+    await expect(page.getByText(EN.invalid)).toBeVisible();
+    await expect(page.locator("#contact-email")).toHaveAttribute("aria-invalid", "true");
+    await expect(page.locator("#contact-name")).not.toHaveAttribute("aria-invalid", "true");
+    await expect(page.locator("#contact-message")).not.toHaveAttribute("aria-invalid", "true");
+    expectNoPageErrors(errors);
+  });
+
+  test("valid submit replaces the form with a status panel", async ({ page }) => {
+    const errors = collectPageErrors(page, true);
+    await page.goto("/en");
+    await page.locator("#contact-name").fill("QA Tester");
+    await page.locator("#contact-email").fill("qa@example.com");
+    await page.locator("#contact-message").fill("Hello from QA");
+    await page.getByRole("button", { name: EN.send }).click();
+    const panel = page.getByRole("status");
+    await expect(panel).toBeVisible();
+    await expect(panel).toContainText(EN.success);
+    await expect(page.locator("#contact-name")).toHaveCount(0);
     expectNoPageErrors(errors);
   });
 
