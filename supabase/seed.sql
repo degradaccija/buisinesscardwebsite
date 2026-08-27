@@ -154,11 +154,11 @@ insert into projects (id, title, description_en, description_lv, image_url, repo
     'This Website',
     'The site you are reading. A bilingual business card built with Next.js 16, Tailwind, and Supabase as the CMS. All content lives in Postgres and is read at build time, so the page ships as static HTML.',
     'Vietne, kuru šobrīd lasi. Divvalodu vizītkarte, būvēta ar Next.js 16, Tailwind un Supabase kā satura pārvaldības sistēmu. Viss saturs atrodas Postgres datubāzē un tiek ielasīts būvēšanas laikā, tāpēc lapa tiek izsniegta kā statisks HTML.',
-    null,
+    '/images/project-site.jpg',
     null,
     null,
     array['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],
-    false,
+    true,
     3
   )
 on conflict (id) do nothing;
