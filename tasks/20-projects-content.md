@@ -75,15 +75,17 @@ signed outputs are summarized below.
   subdomains, and my Obsidian vault syncs in real time over CouchDB."
   Tags: Linux, Docker, Tailscale, Nginx.
 
-## Screenshot shot list (PENDING - owner captures, then wire in)
+## Screenshot shot list (captured + wired 2026-08-27)
 
 1. `docker ps` or Portainer stack view (shows the ~21 services)
 2. Hermes CLI session showing tool calls executing
 3. Hermes dashboard (basic-auth UI)
 4. `systemctl status uxplay` or the Latvian-law cron output
 
-When captured: drop in `site/public/images/`, crop 16:10, set
-`projects.image_url` via Supabase + update seed.sql.
+Shipped 2026-08-27: cropped to 16:10 (2400x1500), dropped in
+`site/public/images/`, `projects.image_url` set via REST on live DB and
+updated in seed.sql. Wired: project-hermes.jpg + project-homelab.jpg are
+live on the cards and in the hero work carousel.
 
 ## Repo plan
 
@@ -97,12 +99,17 @@ creates the GitHub repo; then `git init` + push; then set
 - [x] Project lineup replaced with real projects (seed + live DB)
 - [x] "Proxmox" and "Postgres" mentions removed from project copy
 - [x] Bilingual copy verified live on both locales
-- [x] Screenshots wired into cards (blocked on owner capture)
+- [x] Screenshots wired into cards (project-hermes.jpg + project-homelab.jpg live on cards, verified 200 on both locales)
 - [x] Hermes repo created and linked on the card (github.com/degradaccija/hermes-homelab)
 
 ## Notes
 
-- Cards ship with monogram fallbacks until screenshots land (by design).
+- Photo split (2026-08-27): the hero visual is the featured-project work
+  carousel (`HeroCarousel.tsx`); the friendly portrait `about.jpg`
+  (1254x1254) renders in the About section only. Old `portrait.jpg`
+  removed from the repo and now 404s.
+- Cards used monogram fallbacks by design until screenshots landed; both
+  featured cards render real screenshots since 2026-08-27.
 - Time-saved metric intentionally excluded (unverified).
 - Console modding (20+ Perplexity convos) stays persona color for the
   "Tech repair & consulting" service - not a portfolio project card.

@@ -22,7 +22,7 @@ to find placeholder locations.
 - [x] Apply approved Task 17 content to the live DB (tagline, bio, projects, services, education description + photo_url) — applied 2026-08-27 via REST, verified live on both locales. Fresh installs get it from seed.sql directly.
 
 - [x] `site_profile.email` — real contact email (marcis.kregers@gmail.com)
-- [x] `site_profile.photo_url` — portrait at `site/public/images/portrait.jpg` (1254x1254); seed + live DB point to `/images/portrait.jpg`
+- [x] `site_profile.photo_url` — photo lives in About only: `site/public/images/about.jpg`, live DB + seed point to `/images/about.jpg`. Hero was replaced by the work-screenshot carousel and old `portrait.jpg` removed (2026-08-27)
 - [x] `site_profile.github_url` — GitHub profile URL (https://github.com/degradaccija)
 - [x] `site_profile.linkedin_url` — LinkedIn profile URL (https://lv.linkedin.com/in/marcis-kregers)
 - [x] `site_profile.tagline_en/lv` — final copy (Task 17, owner approved)
@@ -37,14 +37,17 @@ to find placeholder locations.
 
 ## Asset requests (image slots)
 
-Decision 2026-08-27: project cards ship with the monogram-style fallback
-(`image_url` null) until real screenshots exist. Owner decision — no interim
-picsum placeholders. Drop files in `site/public/images/`, then set
+Decision 2026-08-27 (superseded same day: real screenshots shipped and
+wired): project cards initially shipped with the monogram-style fallback
+(`image_url` null) until real screenshots existed. Owner decision - no
+interim picsum placeholders. Drop files in `site/public/images/`, then set
 `projects.image_url` in Supabase and/or update `supabase/seed.sql`.
 
-- [x] P0 - owner portrait: done, `site/public/images/portrait.jpg` (1254x1254 square, replaced the earlier vertical photo 2026-08-27).
-      Hero and About render it via `next/image` (hero has `priority`).
-- [ ] P1 - real project screenshots, one per project
+- [x] P0 - owner portrait: done, now `site/public/images/about.jpg` (1254x1254 square). Rendered in About only since 2026-08-27; hero shows the project screenshot carousel instead.
+- [x] P1 - real project screenshots, one per project: shipped 2026-08-27.
+      Wired: Hermes = `/images/project-hermes.jpg` (2400x1500), Homelab =
+      `/images/project-homelab.jpg` (2400x1500); live on the project cards
+      and in the hero work carousel (seed.sql + live DB patched via REST).
       - Shot list (Hermes): docker ps / Portainer stack view, Hermes CLI
         session with tool calls, Hermes dashboard, systemctl status uxplay
         or the Latvian-law cron output. See tasks/20-projects-content.md.
@@ -62,7 +65,7 @@ picsum placeholders. Drop files in `site/public/images/`, then set
         with `object-[center_20%]`.
       - Dimensions: 1400x1000 (7/5). Style: desk/workspace at work,
         warm-violet duotone grade, shallow depth of field (board-02).
-- [x] P3 - hero reshoot: resolved by the square portrait (1254x1254 fills the 5/6 hero frame with minimal cropping).
+- [x] P3 - hero reshoot: superseded 2026-08-27, the hero visual is now the featured-project screenshot carousel; the portrait serves About only (`/images/about.jpg`).
 
 ## After deployment
 
