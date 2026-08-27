@@ -44,7 +44,7 @@ interim picsum placeholders. Drop files in `site/public/images/`, then set
 `projects.image_url` in Supabase and/or update `supabase/seed.sql`.
 
 - [x] P0 - owner portrait: done, now `site/public/images/about.jpg` (1254x1254 square). Rendered in About only since 2026-08-27; hero shows the project screenshot carousel instead.
-- [x] P1 - real project screenshots, one per project: shipped 2026-08-27.
+- [x] P1 - real project screenshots, one per project: shipped 2026-08-27. This Website card added later via Playwright capture (all 3 cards + 3 hero carousel slides now use real images).
       Wired: Hermes = `/images/project-hermes.jpg` (2400x1500), Homelab =
       `/images/project-homelab.jpg` (2400x1500); live on the project cards
       and in the hero work carousel (seed.sql + live DB patched via REST).

@@ -102,6 +102,19 @@ creates the GitHub repo; then `git init` + push; then set
 - [x] Screenshots wired into cards (project-hermes.jpg + project-homelab.jpg live on cards, verified 200 on both locales)
 - [x] Hermes repo created and linked on the card (github.com/degradaccija/hermes-homelab)
 
+## Addendum (2026-08-27, later)
+
+- Hero photo replaced entirely by a 3-slide work carousel (HeroCarousel.tsx,
+  crossfade, reduced-motion static). Slides = featured projects from the DB,
+  so adding a project with an image grows the carousel.
+- Carousel frame fixed from 5/6 to 16/10: the portrait-oriented frame
+  center-cropped landscape screenshots into empty middle regions.
+- About section uses the friendlier portrait (about.jpg); old portrait.jpg
+  removed from disk, git, and DB.
+- This Website is now the third featured card (screenshot of the live hero
+  captured via Playwright at 1440x900@2x), giving the carousel 3 slides and
+  the Projects section a 3-card sticky-stack.
+
 ## Notes
 
 - Photo split (2026-08-27): the hero visual is the featured-project work
