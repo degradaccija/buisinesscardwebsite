@@ -34,10 +34,22 @@ export default async function LocalePage({
     getServices(),
   ]);
 
+  const heroSlides = projects.flatMap((project) =>
+    project.featured && project.image_url
+      ? [
+          {
+            src: project.image_url,
+            title: project.title,
+            alt: dict.hero.slideAlt.replace("{project}", project.title),
+          },
+        ]
+      : [],
+  );
+
   return (
     <main className="flex-1 overflow-x-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <Hero locale={locale} dict={dict} profile={profile} />
+        <Hero locale={locale} dict={dict} profile={profile} slides={heroSlides} />
         <About locale={locale} dict={dict} profile={profile} />
         <Skills dict={dict} skills={skills} />
         <Experience locale={locale} dict={dict} items={experience} />

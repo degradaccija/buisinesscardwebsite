@@ -10,6 +10,8 @@ const en = {
   },
   hero: {
     available: "Available for freelance & full-time work",
+    carouselLabel: "Featured project screenshots",
+    slideAlt: "Screenshot of {project}",
   },
   cta: {
     contact: "Get in touch",

@@ -12,6 +12,8 @@ const lv: typeof en = {
   },
   hero: {
     available: "Pieejams freelance un pilnas slodzes darbam",
+    carouselLabel: "Izcelto projektu ekrānattēli",
+    slideAlt: "Attēls: {project}",
   },
   cta: {
     contact: "Sazināties",

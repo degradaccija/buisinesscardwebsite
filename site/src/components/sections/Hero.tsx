@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import type { Dict } from "@/i18n";
 import type { Locale, SiteProfile } from "@/lib/types";
@@ -6,15 +5,18 @@ import { Button } from "@/components/ui/Button";
 import { Monogram } from "@/components/ui/Monogram";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
 import { HeroMotion } from "@/components/sections/HeroMotion";
+import { HeroCarousel } from "@/components/sections/HeroCarousel";
 
 export function Hero({
   locale,
   dict,
   profile,
+  slides,
 }: {
   locale: Locale;
   dict: Dict;
   profile: SiteProfile | null;
+  slides: { src: string; title: string; alt: string }[];
 }) {
   if (!profile) {
     return (
@@ -92,15 +94,8 @@ export function Hero({
             aria-hidden="true"
             className="absolute -right-4 top-8 hidden h-full w-full rounded-xl border border-accent/40 lg:block"
           />
-          {profile.photo_url ? (
-            <Image
-              src={profile.photo_url}
-              alt={profile.name}
-              width={440}
-              height={528}
-              priority
-              className="relative aspect-[5/6] w-full rounded-xl border border-border object-cover"
-            />
+          {slides.length > 0 ? (
+            <HeroCarousel slides={slides} label={dict.hero.carouselLabel} />
           ) : (
             <Monogram className="relative aspect-[5/6] w-full text-6xl" />
           )}
