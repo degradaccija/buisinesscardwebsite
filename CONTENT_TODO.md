@@ -19,7 +19,7 @@ to find placeholder locations.
 
 ## Content placeholders (in `supabase/seed.sql`)
 
-- [ ] Apply approved Task 17 content to the live DB (tagline, bio, projects, services, education description + photo_url) — owner approved 2026-08-27; applied via REST after the redesigned build is live. Fresh installs get it from seed.sql directly.
+- [x] Apply approved Task 17 content to the live DB (tagline, bio, projects, services, education description + photo_url) — applied 2026-08-27 via REST, verified live on both locales. Fresh installs get it from seed.sql directly.
 
 - [x] `site_profile.email` — real contact email (marcis.kregers@gmail.com)
 - [x] `site_profile.photo_url` — portrait at `site/public/images/profile.jpg` (704x1521); seed + live DB point to `/images/profile.jpg`
@@ -68,5 +68,6 @@ picsum placeholders. Drop files in `site/public/images/`, then set
 
 ## After deployment
 
-- [ ] Live site URL recorded here: ______________
+- [x] Live site URL: https://buisinesscardwebsite.vercel.app (prod; Git-connected, deploys on push to main)
+- [x] Redesign deployed + live content applied (2026-08-27): approved copy + photo_url applied via REST; both locales verified rendering
 - [ ] Verify contact form email lands in inbox
