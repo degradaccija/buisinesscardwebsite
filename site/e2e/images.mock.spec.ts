@@ -5,8 +5,9 @@ test.describe("images (mock content)", () => {
   test("hero image loads with priority and is preloaded", async ({ page }) => {
     const errors = collectPageErrors(page, true);
     await page.goto("/en");
-    const img = page.locator("[data-hero-visual] img");
-    await expect(img).toHaveCount(1);
+    const imgs = page.locator("[data-hero-visual] img");
+    await expect(imgs).toHaveCount(2);
+    const img = imgs.first();
     expect(await img.getAttribute("loading")).not.toBe("lazy");
     await expect
       .poll(() => img.evaluate((el) => (el as HTMLImageElement).naturalWidth))
@@ -20,7 +21,7 @@ test.describe("images (mock content)", () => {
     expect(response.status()).toBe(200);
     const html = await response.text();
     expect(html).toContain('rel="preload"');
-    expect(html).toContain("portrait.jpg");
+    expect(html).toContain("Featured project screenshots");
   });
 
   test("all project images load after scrolling through the page", async ({ page }) => {
