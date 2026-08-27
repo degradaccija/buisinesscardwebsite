@@ -22,7 +22,7 @@ to find placeholder locations.
 - [x] Apply approved Task 17 content to the live DB (tagline, bio, projects, services, education description + photo_url) — applied 2026-08-27 via REST, verified live on both locales. Fresh installs get it from seed.sql directly.
 
 - [x] `site_profile.email` — real contact email (marcis.kregers@gmail.com)
-- [x] `site_profile.photo_url` — portrait at `site/public/images/profile.jpg` (704x1521); seed + live DB point to `/images/profile.jpg`
+- [x] `site_profile.photo_url` — portrait at `site/public/images/portrait.jpg` (1254x1254); seed + live DB point to `/images/portrait.jpg`
 - [x] `site_profile.github_url` — GitHub profile URL (https://github.com/degradaccija)
 - [x] `site_profile.linkedin_url` — LinkedIn profile URL (https://lv.linkedin.com/in/marcis-kregers)
 - [x] `site_profile.tagline_en/lv` — final copy (Task 17, owner approved)
@@ -42,7 +42,7 @@ Decision 2026-08-27: project cards ship with the monogram-style fallback
 picsum placeholders. Drop files in `site/public/images/`, then set
 `projects.image_url` in Supabase and/or update `supabase/seed.sql`.
 
-- [x] P0 - owner portrait: done, `site/public/images/profile.jpg` (704x1521).
+- [x] P0 - owner portrait: done, `site/public/images/portrait.jpg` (1254x1254 square, replaced the earlier vertical photo 2026-08-27).
       Hero and About render it via `next/image` (hero has `priority`).
 - [ ] P1 - real project screenshots, one per project
       - Slot: project cards. Featured card image top: aspect 16/10, full-bleed,
@@ -59,12 +59,7 @@ picsum placeholders. Drop files in `site/public/images/`, then set
         with `object-[center_20%]`.
       - Dimensions: 1400x1000 (7/5). Style: desk/workspace at work,
         warm-violet duotone grade, shallow depth of field (board-02).
-- [ ] P3 - optional portrait reshoot for the hero visual slot
-      - Current photo is vertical 704x1521; the hero slot is aspect 5/6 and
-        crops with `object-cover` (default center), so the vertical shot
-        already works. A 4/5-grade crop (1200x1500 per board-01, duotone
-        violet grade, subject right of center) would fill the frame with less
-        cropping. Low priority.
+- [x] P3 - hero reshoot: resolved by the square portrait (1254x1254 fills the 5/6 hero frame with minimal cropping).
 
 ## After deployment
 

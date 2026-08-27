@@ -20,7 +20,7 @@ test.describe("images (mock content)", () => {
     expect(response.status()).toBe(200);
     const html = await response.text();
     expect(html).toContain('rel="preload"');
-    expect(html).toContain("profile.jpg");
+    expect(html).toContain("portrait.jpg");
   });
 
   test("all project images load after scrolling through the page", async ({ page }) => {

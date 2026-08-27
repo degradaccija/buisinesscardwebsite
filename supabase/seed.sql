@@ -11,7 +11,7 @@ values (
   'Veidoju web lietotnes un AI aģentus, uzturu Linux sistēmas, remontēju datorus.',
   'I trained as a computer systems technician, and Linux has been my daily driver ever since. I build web apps with React, Next.js, and TypeScript, plus AI agents that automate the repetitive parts of development and server upkeep. In my free time I repair laptops and desktops, from diagnostics to replacement parts.',
   'Esmu izmācījies par datorsistēmu tehniķi, un kopš tā laika ar Linux strādāju ik dienas. Veidoju web lietotnes ar React, Next.js un TypeScript, kā arī AI aģentus, kas automatizē atkārtoto darbu izstrādē un serveru uzturēšanā. Brīvajā laikā remontēju portatīvos un galddatorus, sākot ar diagnostiku un beidzot ar detaļu nomaiņu.',
-  '/images/profile.jpg',
+  '/images/portrait.jpg',
   'marcis.kregers@gmail.com',
   'https://github.com/degradaccija',
   'https://lv.linkedin.com/in/marcis-kregers',
