@@ -114,6 +114,10 @@ creates the GitHub repo; then `git init` + push; then set
 - This Website is now the third featured card (screenshot of the live hero
   captured via Playwright at 1440x900@2x), giving the carousel 3 slides and
   the Projects section a 3-card sticky-stack.
+- About bio rewritten in owner's voice (Unix philosophy, MI agents, board
+  level repair craft) + site-wide Latvian term switch: AI -> MI (bio,
+  tagline, role, services title, Hermes description, experience title,
+  meta strings). EN keeps "AI". Verified live on both locales.
 
 ## Notes
 
