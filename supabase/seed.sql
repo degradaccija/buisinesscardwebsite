@@ -127,25 +127,25 @@ on conflict (id) do nothing;
 insert into projects (id, title, description_en, description_lv, image_url, repo_url, live_url, tags, featured, sort_order) values
   (
     '00000000-0000-4000-8000-000000000301',
-    'Agent Logbook',
-    'A local tool for running and inspecting AI agents. Every tool call, prompt, and result goes to Postgres, so a failed run can be replayed and debugged step by step. I built it for my own agent work and use it daily.',
-    'Lokāls rīks AI aģentu palaišanai un pārbaudei. Katrs rīka izsaukums, uzvedne un rezultāts nonāk Postgres datubāzē, tāpēc neveiksmīgu palaišanu var atkārtot un izpētīt soli pa solim. Uzbūvēju to savam darbam ar aģentiem un lietoju ik dienas.',
+    'Hermes',
+    'My always-on AI agent. It runs my home server day to day: restarting services, patching config files, automating daily checks, and debugging everything from Docker disk hogs to AirPlay freezes. Every tool call is logged to SQLite, so a failed run can be replayed and inspected step by step.',
+    'Mans nepārtraukti strādājošais AI aģents. Tas katru dienu pārvalda manu serveri: restartē servisus, labo konfigurācijas failus, automatizē ikdienas pārbaudes un atkļūdo visu, sākot ar Docker vietas ēdājiem un beidzot ar AirPlay aizsalšanu. Katrs rīka izsaukums tiek saglabāts SQLite datubāzē, tāpēc neveiksmīgu palaišanu var atkārtot un izpētīt soli pa solim.',
     null,
     null,
     null,
-    array['TypeScript', 'Node.js', 'PostgreSQL', 'AI agents'],
+    array['AI agents', 'SQLite', 'Docker', 'Linux', 'systemd'],
     true,
     1
   ),
   (
     '00000000-0000-4000-8000-000000000302',
     'Homelab',
-    'My home server lab: Proxmox running containers and virtual machines for development, backups, and self-hosted services. I plan, run, and harden it myself, and it doubles as the test environment for most of my projects.',
-    'Mans homelab: Proxmox ar konteineriem un virtuālajām mašīnām izstrādei, dublējumkopijām un pašmitinātiem pakalpojumiem. Plānoju, palaižu un nostiprinu to pats, un tas kalpo kā testa vide lielākajai daļai manu projektu.',
+    'A bare-metal Debian 13 box that runs about 21 self-hosted services: media, photo library, DNS, search, and sync. Remote access goes through Tailscale with split DNS, Nginx Proxy Manager serves SSL subdomains, and my Obsidian vault syncs in real time over CouchDB.',
+    'Paša savākts Debian 13 serveris, kurā darbojas apmēram 21 pašmitināts pakalpojums: multivide, fotoarhīvs, DNS, meklēšana un sinhronizācija. Attālinātā piekļuve notiek caur Tailscale ar split DNS, Nginx Proxy Manager nodrošina SSL apakšdomēnus, un mana Obsidian glabātava reāllaikā sinhronizējas caur CouchDB.',
     null,
     null,
     null,
-    array['Linux', 'Docker', 'Proxmox', 'Networking'],
+    array['Linux', 'Docker', 'Tailscale', 'Nginx'],
     false,
     2
   ),
