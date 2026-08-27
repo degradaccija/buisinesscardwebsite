@@ -146,7 +146,7 @@ insert into projects (id, title, description_en, description_lv, image_url, repo
     null,
     null,
     array['Linux', 'Docker', 'Tailscale', 'Nginx'],
-    false,
+    true,
     2
   ),
   (
