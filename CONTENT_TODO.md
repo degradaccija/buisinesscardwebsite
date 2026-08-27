@@ -30,8 +30,8 @@ to find placeholder locations.
 - [x] `experience` education description — final copy (Task 17, owner approved)
 - [x] `experience` education: Jelgavas tehnikums, 2022-09 → 2026-06, Datorsistēmu tehniķis / sistēmu administrators, LKI 4. līmenis (owner provided 2026-08-27)
 - [x] `experience` work history: 5 real entries (SIA OptiCore AI intern, Riga Fashion Week technical manager, Jelgavas Centra pamatskola IT intern, SIA Ogilvy sales, RTU IT intern) applied + verified live (owner provided 2026-08-27)
-- [x] Projects: titles, descriptions, tags — final copy (Task 17, owner approved)
-- [ ] Projects: repo/live links (kept null in seed.sql, owner fills real links)
+- [x] Projects: real lineup shipped 2026-08-27 (Hermes featured, Homelab, This Website) - mined from Hermes agent logs + Perplexity memory; copy en/lv verified live
+- [ ] Projects: repo/live links (Hermes repo skeleton ready at `~/Documents/hermes/`; owner creates GitHub repo `hermes-homelab`, then push + set `repo_url` in Supabase and seed.sql)
 - [x] Services: final wording EN/LV (Task 17, owner approved)
 - [ ] Skills levels (1–5) reviewed — current values are estimates
 
@@ -45,6 +45,9 @@ picsum placeholders. Drop files in `site/public/images/`, then set
 - [x] P0 - owner portrait: done, `site/public/images/portrait.jpg` (1254x1254 square, replaced the earlier vertical photo 2026-08-27).
       Hero and About render it via `next/image` (hero has `priority`).
 - [ ] P1 - real project screenshots, one per project
+      - Shot list (Hermes): docker ps / Portainer stack view, Hermes CLI
+        session with tool calls, Hermes dashboard, systemctl status uxplay
+        or the Latvian-law cron output. See tasks/20-projects-content.md.
       - Slot: project cards. Featured card image top: aspect 16/10, full-bleed,
         renders 896x560 @1x, `object-cover`, hover `scale-105`; grid tiles
         render 40vw.
