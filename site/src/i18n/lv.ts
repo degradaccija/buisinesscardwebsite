@@ -26,7 +26,7 @@ const lv: typeof en = {
       focus: "Fokuss",
       languages: "Valodas",
     },
-    focusValue: "Pilna cikla web izstrāde, AI aģenti",
+    focusValue: "Pilna cikla web izstrāde, MI aģenti",
     languagesValue: "Latviešu, angļu",
     cv: "Lejupielādēt CV",
   },
@@ -74,9 +74,9 @@ const lv: typeof en = {
     body: "Sadaļas drīzumā.",
   },
   meta: {
-    title: "Mārcis Krēgers | Pilna cikla web izstrādātājs un AI inženieris",
+    title: "Mārcis Krēgers | Pilna cikla web izstrādātājs un MI inženieris",
     description:
-      "Pilna cikla web izstrādātājs un AI/aģentu inženieris no Latvijas. Veidoju web lietotnes ar React un Next.js, uzturu Linux serverus un automatizēju darbu ar AI aģentiem.",
+      "Pilna cikla web izstrādātājs un MI/aģentu inženieris no Latvijas. Veidoju web lietotnes ar React un Next.js, uzturu Linux serverus un automatizēju darbu ar MI aģentiem.",
   },
   skipLink: "Izlaist uz saturu",
 };
