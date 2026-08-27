@@ -44,30 +44,82 @@ on conflict (id) do nothing;
 -- experience (newest first by sort_order)
 insert into experience (id, type, title_en, title_lv, organization_en, organization_lv, start_date, end_date, description_en, description_lv, sort_order) values
   (
+    '00000000-0000-4000-8000-000000000211',
+    'work',
+    'AI Engineer Intern',
+    'AI inženieris praktikants',
+    'SIA OptiCore',
+    'SIA OptiCore',
+    '2026-01-01',
+    '2026-07-31',
+    'Built LLM-powered automation for real business tasks: prototyped agent workflows, integrated language models into internal tools, and tested prompts and pipelines on live data.',
+    'Veidoju LLM automatizāciju reāliem uzdevumiem: prototipēju aģentu darbplūsmas, integrēju valodu modeļus iekšējos rīkos un pārbaudīju to darbību uz reāliem datiem.',
+    60
+  ),
+  (
+    '00000000-0000-4000-8000-000000000212',
+    'work',
+    'Technical Manager',
+    'Tehniskais direktors',
+    'Riga Fashion Week',
+    'Riga Fashion Week',
+    '2024-04-01',
+    '2026-04-30',
+    'Ran show technology for Riga Fashion Week, two seasons per year: planned and managed stage, lighting, sound, and AV for the runway shows, leading the technical crew on site.',
+    'Atbildēju par tehnisko nodrošinājumu Riga Fashion Week skatēs, kas notiek divas reizes gadā: plānoju un vadīju skatuves, gaismas, skaņas un AV risinājumus, pasākuma laikā vadot tehnisko komandu.',
+    50
+  ),
+  (
+    '00000000-0000-4000-8000-000000000213',
+    'work',
+    'IT Help Desk Intern',
+    'IT atbalsta praktikants',
+    'Jelgavas Centra pamatskola',
+    'Jelgavas Centra pamatskola',
+    '2025-10-01',
+    '2025-12-31',
+    'IT support for teachers and school staff: kept classroom computers and the school network running, resolved day-to-day hardware and software issues.',
+    'IT atbalsts skolotājiem un skolas personālam: uzturēju klašu datorus un skolas tīklu, risināju ikdienas aparatūras un programmatūras problēmas.',
+    40
+  ),
+  (
+    '00000000-0000-4000-8000-000000000214',
+    'work',
+    'Sales Specialist',
+    'Pārdošanas speciālists',
+    'SIA Ogilvy',
+    'SIA Ogilvy',
+    '2024-05-01',
+    '2024-11-30',
+    'Client-facing sales role at the marketing agency: handled customer communication, prepared offers, and coordinated work between clients and internal teams.',
+    'Darbs ar klientiem mārketinga aģentūrā: vadīju klientu komunikāciju, sagatavoju piedāvājumus un koordinēju darbu starp klientiem un iekšējām komandām.',
+    30
+  ),
+  (
+    '00000000-0000-4000-8000-000000000215',
+    'work',
+    'IT Help Desk Intern',
+    'IT atbalsta praktikants',
+    'Riga Technical University (RTU)',
+    'Rīgas Tehniskā universitāte (RTU)',
+    '2024-04-01',
+    '2024-07-31',
+    'First-line IT support at the university: handled support tickets, diagnosed hardware and software problems, and set up workstations for staff.',
+    'Pirmā līmeņa IT atbalsts universitātē: pieņēmu un risināju atbalsta pieprasījumus, diagnosticēju aparatūras un programmatūras problēmas, uzstādīju darbstacijas.',
+    20
+  ),
+  (
     '00000000-0000-4000-8000-000000000201',
     'education',
     'Computer Systems Technician / System Administrator',
     'Datorsistēmu tehniķis / sistēmu administrators',
-    '[TODO: CONTENT] Vocational school in Jelgava',
-    '[TODO: CONTENT] Profesionālā skola Jelgavā',
-    null,
-    null,
-    'Vocational training in computer systems and system administration. The program covered hardware, networking, operating systems, and IT infrastructure.',
-    'Profesionālā izglītība datorsistēmu un sistēmu administrēšanas jomā. Programma aptvēra aparatūru, tīklus, operētājsistēmas un IT infrastruktūru.',
+    'Jelgavas tehnikums',
+    'Jelgavas tehnikums',
+    '2022-09-01',
+    '2026-06-30',
+    'Vocational education in computer systems and system administration. Graduated in 2026 with a Level 4 profession under the Latvian Qualifications Framework (LKI). The program covered hardware, networking, operating systems, and IT infrastructure.',
+    'Profesionālā izglītība datorsistēmu un sistēmu administrēšanas jomā. Beidzu 2026. gadā ar 4. līmeņa profesiju pēc Latvijas kvalifikāciju ietvara. Programmā apguvu aparatūru, tīklus, operētājsistēmas un IT infrastruktūru.',
     10
-  ),
-  (
-    '00000000-0000-4000-8000-000000000202',
-    'work',
-    '[TODO: CONTENT] Work experience entry',
-    '[TODO: CONTENT] Darba pieredzes ieraksts',
-    '[TODO: CONTENT] Company name',
-    '[TODO: CONTENT] Uzņēmuma nosaukums',
-    null,
-    null,
-    '[TODO: CONTENT] Describe your role and achievements here.',
-    '[TODO: CONTENT] Apraksti šeit savu lomu un sasniegumus.',
-    5
   )
 on conflict (id) do nothing;
 
