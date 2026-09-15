@@ -30,6 +30,17 @@ informational with a dismiss action, not an opt-in gate.
 
 ## Notes / decisions
 
+- **v2 (2026-09-15, owner request): real Accept/Decline consent.** The
+  initial informational-only banner was replaced after the owner flagged
+  legal-risk concerns. The language cookie is now stored **only after the
+  visitor accepts**; declining (or ignoring) stores nothing, and declining
+  actively expires any previously set `NEXT_LOCALE` cookie. The language
+  toggle still works via URL routing without the cookie — it just stops
+  persisting across visits. Consent state itself lives in `localStorage`
+  (`cookie-consent`), not in a cookie. Policy text updated to match.
+  Rationale: the strictly-necessary exemption arguably covered a
+  language-only cookie, but an explicit opt-in is the safe interpretation.
+
 - **No accept/reject cookie dialog:** the only cookie is functional
   (`NEXT_LOCALE` language preference, no identifier), exempt from consent
   under the ePrivacy "strictly necessary/functional" carve-out. A fake

@@ -68,8 +68,9 @@ const en = {
   },
   cookieNotice: {
     message:
-      "This site uses a single functional cookie to remember your language. No tracking, no analytics, no ads.",
-    accept: "Got it",
+      "This site uses a single cookie — it remembers your language. No tracking, no analytics, no ads. May we store it?",
+    accept: "Accept",
+    decline: "Decline",
     policy: "Privacy policy",
   },
   footer: {
@@ -97,7 +98,7 @@ const en = {
       },
       {
         term: "Language cookie",
-        text: "The site sets one cookie, NEXT_LOCALE, to remember whether you chose English or Latvian. It is strictly functional, contains no identifier, and is not used for tracking, so it does not require consent.",
+        text: "The site sets one cookie, NEXT_LOCALE, to remember whether you chose English or Latvian. It is stored only if you accept it in the banner. If you decline, no cookie is stored and your language resets each visit to what your browser prefers. The cookie contains no identifier and is never used for tracking.",
       },
       {
         term: "Server logs",

@@ -2,42 +2,32 @@
 
 import { useSyncExternalStore } from "react";
 import Link from "next/link";
+import { CONSENT_CHANGE_EVENT, getConsent, setConsent } from "@/lib/consent";
 import type { Dict } from "@/i18n";
 import type { Locale } from "@/lib/types";
 
-const STORAGE_KEY = "cookie-notice-dismissed";
-const CHANGE_EVENT = "cookie-notice-change";
-
 function subscribe(callback: () => void) {
-  window.addEventListener(CHANGE_EVENT, callback);
-  return () => window.removeEventListener(CHANGE_EVENT, callback);
-}
-
-function isDismissed() {
-  try {
-    return window.localStorage.getItem(STORAGE_KEY) === "1";
-  } catch {
-    return false;
-  }
+  window.addEventListener(CONSENT_CHANGE_EVENT, callback);
+  return () => window.removeEventListener(CONSENT_CHANGE_EVENT, callback);
 }
 
 function getServerSnapshot() {
-  return true;
+  return "undecided" as const;
 }
 
 export function CookieNotice({ locale, dict }: { locale: Locale; dict: Dict }) {
-  const dismissed = useSyncExternalStore(subscribe, isDismissed, getServerSnapshot);
+  const consent = useSyncExternalStore(subscribe, getConsent, getServerSnapshot);
 
-  function dismiss() {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, "1");
-    } catch {
-      // private browsing: banner returns next visit, which is fine
+  function decide(value: "accepted" | "declined") {
+    if (value === "accepted") {
+      document.cookie = `NEXT_LOCALE=${locale};path=/;max-age=31536000;samesite=lax`;
+    } else {
+      document.cookie = "NEXT_LOCALE=;path=/;max-age=0;samesite=lax";
     }
-    window.dispatchEvent(new Event(CHANGE_EVENT));
+    setConsent(value);
   }
 
-  if (dismissed) return null;
+  if (consent !== "undecided") return null;
 
   return (
     <div
@@ -54,14 +44,24 @@ export function CookieNotice({ locale, dict }: { locale: Locale; dict: Dict }) {
           >
             {dict.cookieNotice.policy}
           </Link>
+          .
         </p>
-        <button
-          type="button"
-          onClick={dismiss}
-          className="shrink-0 self-start rounded-lg border border-border px-4 py-2 font-mono text-xs font-medium tracking-[0.04em] text-text-primary transition-colors hover:border-accent hover:text-accent sm:self-center"
-        >
-          {dict.cookieNotice.accept}
-        </button>
+        <div className="flex shrink-0 items-center gap-2 self-start sm:self-center">
+          <button
+            type="button"
+            onClick={() => decide("declined")}
+            className="rounded-lg border border-border px-4 py-2 font-mono text-xs font-medium tracking-[0.04em] text-text-muted transition-colors hover:border-text-muted hover:text-text-primary"
+          >
+            {dict.cookieNotice.decline}
+          </button>
+          <button
+            type="button"
+            onClick={() => decide("accepted")}
+            className="rounded-lg border border-accent/60 px-4 py-2 font-mono text-xs font-medium tracking-[0.04em] text-accent transition-colors hover:bg-accent/10"
+          >
+            {dict.cookieNotice.accept}
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import { switchLocalePath } from "@/lib/locale";
 import { EASE_FLUID, gsap, prefersReducedMotion, useReducedMotion } from "@/lib/motion";
 import { z } from "@/lib/z";
 import { Button } from "@/components/ui/Button";
+import { getConsent } from "@/lib/consent";
 
 const sections = ["about", "skills", "experience", "projects", "services", "contact"] as const;
 
@@ -132,7 +133,9 @@ export function Nav({ locale, dict }: { locale: Locale; dict: Dict }) {
             <Link
               href={switchLocalePath(pathname, nextLocale)}
               onClick={() => {
-                document.cookie = `NEXT_LOCALE=${nextLocale};path=/;max-age=31536000;samesite=lax`;
+                if (getConsent() === "accepted") {
+                  document.cookie = `NEXT_LOCALE=${nextLocale};path=/;max-age=31536000;samesite=lax`;
+                }
               }}
               className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border border-border px-3 font-mono text-xs uppercase tracking-wider transition-colors hover:border-accent/40 hover:bg-surface-2"
             >

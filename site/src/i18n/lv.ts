@@ -70,8 +70,9 @@ const lv: typeof en = {
   },
   cookieNotice: {
     message:
-      "Šī vietne izmanto vienu funkcionālu sīkdatni, lai atcerētos Tavu valodu. Bez izsekošanas, analītikas un reklāmām.",
-    accept: "Labi",
+      "Šī vietne izmanto vienu sīkdatni — tā atceras Tavu valodu. Bez izsekošanas, analītikas un reklāmām. Vai atļauj to saglabāt?",
+    accept: "Piekrītu",
+    decline: "Noraidīt",
     policy: "Privātuma politika",
   },
   footer: {
@@ -99,7 +100,7 @@ const lv: typeof en = {
       },
       {
         term: "Valodas sīkdatne",
-        text: "Vietne izveido vienu sīkdatni — NEXT_LOCALE, lai atcerētos, vai izvēlējies angļu vai latviešu valodu. Tā ir stingri funkcionāla, nesatur nevienu identifikatoru un netiek izmantota izsekošanai, tāpēc tai nav nepieciešama piekrišana.",
+        text: "Vietne izveido vienu sīkdatni — NEXT_LOCALE, lai atcerētos, vai izvēlējies angļu vai latviešu valodu. Tā tiek saglabāta tikai, ja piekrīti banerī. Ja noraidi, sīkdatne netiek saglabāta, un valoda katrā apmeklējumā atgriežas pie Tava pārlūka iestatījumiem. Sīkdatne nesatur nevienu identifikatoru un netiek izmantota izsekošanai.",
       },
       {
         term: "Servera žurnāli",
