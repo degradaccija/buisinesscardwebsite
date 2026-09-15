@@ -27,8 +27,8 @@ function formatPeriod(
   return [start, end].filter(Boolean).join(" - ");
 }
 
-function startYear(item: ExperienceItem): number | null {
-  const date = item.start_date ?? item.end_date;
+function railYear(item: ExperienceItem): number | null {
+  const date = item.end_date ?? item.start_date;
   return date ? new Date(date).getFullYear() : null;
 }
 
@@ -79,7 +79,7 @@ export function Experience({
                     : last
                       ? "top-0 h-[18px]"
                       : "top-0 bottom-0";
-              const year = startYear(item);
+              const year = railYear(item);
               const period = formatPeriod(item, dict, locale);
               const title = locale === "en" ? item.title_en : item.title_lv;
               const organization =

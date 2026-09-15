@@ -43,11 +43,15 @@ dev + AI + Linux-ops story; repair remains available one click deep.
 
 ## Acceptance Criteria
 
-- [ ] "Fixing computers." / "remontēju datorus" gone from hero and meta description,
-      both locales
-- [ ] OG/Twitter preview shows the new tagline
-- [ ] Repair expertise still visible in About bio and Services
-- [ ] Production DB and `seed.sql` in sync; deployed
+- [x] "Fixing computers." / "remontēju datorus" gone from hero and meta description,
+      both locales (verified live 2026-09-15 post-deploy: meta description + og +
+      rendered hero paragraph, /en and /lv)
+- [x] OG/Twitter preview shows the new tagline (og:description verified in live HTML;
+      twitter:description derives from the same buildMetadata source)
+- [x] Repair expertise still visible in About bio and Services (untouched; board-level
+      repair paragraph + "Tech repair & consulting" card confirmed present)
+- [x] Production DB and `seed.sql` in sync; deployed (prod PATCH via REST verified by
+      read-back; seed `afc63fb`; deploy READY)
 
 ## Notes
 
