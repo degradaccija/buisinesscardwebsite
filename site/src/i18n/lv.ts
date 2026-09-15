@@ -70,7 +70,7 @@ const lv: typeof en = {
   },
   cookieNotice: {
     message:
-      "Šī vietne izmanto vienu sīkdatni — tā atceras Tavu valodu. Bez izsekošanas, analītikas un reklāmām. Vai atļauj to saglabāt?",
+      "Šai vietnei vajag vienu mazu izvēli: piekrīti — un tā saglabā sīkdatni, kas atceras Tavu valodu, un ielādē ES mitinātu analītiku (PostHog); noraidi — un vietne paliek pilnīgi bez sīkdatnēm un pieprasījumiem. Bez reklāmām un izsekošanas pikseļiem.",
     accept: "Piekrītu",
     decline: "Noraidīt",
     policy: "Privātuma politika",
@@ -95,6 +95,10 @@ const lv: typeof en = {
         text: "Ja raksti man caur veidlapu, saglabāju Tavu vārdu, e-pasta adresi, ziņu un valodu, kurā pārlūkoji vietni. Tos izmantoju tikai, lai izlasītu ziņu un atbildētu. Tiesiskais pamats ir atbilde uz Tavu pieprasījumu pirms iespējama līguma (VDAR 6. panta 1. punkta b) iedaļa) un mans leģitīmās intereses pamatots darbs — atbildēt cilvēkiem, kas sazinās (6. panta 1. punkta f) iedaļa).",
       },
       {
+        term: "Analītika (neobligāta)",
+        text: "Tikai ja piekrīti, vietne ielādē PostHog — ES mitinātu analītikas pakalpojumu —, kas reģistrē anonīmus lietojuma datus (apmeklētās lapas, klikšķus), lai es varu uzlabot vietni. Ja noraidi, PostHog netiek ielādēts un neviens pieprasījums nepamet Tavu pārlūku. Tiesiskais pamats: Tava piekrišana (VDAR 6. panta 1. punkta a) iedaļa), ko vari jebkurā laikā atsaukt, nodzēšot šīs vietnes datus no pārlūka krātuves.",
+      },
+      {
         term: "Aizsardzība pret surogātpastu",
         text: "Iesniedzot veidlapu, Tava IP adrese tiek pārbaudīta pret īslaicīgu biežuma ierobežojumu, kas glabājas tikai servera atmiņā. Tā nekad netiek ierakstīta datubāzē un stundas laikā pazūd.",
       },
@@ -109,10 +113,10 @@ const lv: typeof en = {
     ],
     noTrackingHeading: "Kas netiek savākts",
     noTrackingBody:
-      "Šajā vietnē nav analītikas, reklāmu, sociālo tīklu izsekotāju vai profilēšanas. Netiek izveidota neviena trešo pušu mārketinga vai statistikas sīkdatne.",
+      "Šajā vietnē nav reklāmu, sociālo tīklu izsekotāju, izsekošanas pikseļu vai profilēšanas. Analītika darbojas tikai pēc piekrišanas banerī, un PostHog (ES) ir vienīgais izmantotais analītikas pakalpojums. Ja noraidīji, vietne vispār neveic nevienu pieprasījumu uz trešajām pusēm.",
     processorsHeading: "Pakalpojumu sniedzēji",
     processorsBody:
-      "Šo vietni palīdz uzturēt trīs apstrādātāji, katrs ar datu apstrādes līgumu: Vercel (mitināšana), Supabase (datubāze) un Resend (ziņu par kontaktformu e-pasta piegāde).",
+      "Vietni uztur šie apstrādātāji, katrs ar datu apstrādes līgumu: Vercel (mitināšana), Supabase (datubāze), Resend (ziņu par kontaktformu e-pasta piegāde) un — tikai ja esi piekritis analītikai — PostHog (ES mitināta lietojuma analītika).",
     retentionHeading: "Cik ilgi dati tiek glabāti",
     retentionBody:
       "Ziņas glabāju tikai tik ilgi, cik nepieciešams sarunas vešanai. Ja vēlies, lai Tava ziņa tiktu dzēsta, raksti man e-pastā, un es to izņemšu.",

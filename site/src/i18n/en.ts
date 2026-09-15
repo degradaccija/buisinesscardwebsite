@@ -68,7 +68,7 @@ const en = {
   },
   cookieNotice: {
     message:
-      "This site uses a single cookie — it remembers your language. No tracking, no analytics, no ads. May we store it?",
+      "This site needs one small choice: accept and it stores a cookie to remember your language and loads EU-hosted analytics (PostHog); decline and it stays completely cookie-free and request-free. No ads, no tracking pixels.",
     accept: "Accept",
     decline: "Decline",
     policy: "Privacy policy",
@@ -93,6 +93,10 @@ const en = {
         text: "If you write to me through the form, I store your name, email address, message, and the language you were browsing in. I use this only to read your message and reply. The legal basis is answering your inquiry before any contract (GDPR Art. 6(1)(b)) and my legitimate interest in responding to people who contact me (Art. 6(1)(f)).",
       },
       {
+        term: "Analytics (optional)",
+        text: "Only if you accept, the site loads PostHog — an EU-hosted analytics service — which records anonymous usage data (pages visited, clicks) so I can improve the site. If you decline, PostHog never loads and not a single request leaves your browser. Legal basis: your consent (GDPR Art. 6(1)(a)), withdrawable anytime by clearing your browser storage for this site.",
+      },
+      {
         term: "Spam protection",
         text: "When you submit the form, your IP address is checked against a short-term rate limit held only in server memory. It is never written to the database and disappears within an hour.",
       },
@@ -107,10 +111,10 @@ const en = {
     ],
     noTrackingHeading: "What is not collected",
     noTrackingBody:
-      "There is no analytics, no advertising, no social media trackers, and no profiling on this site. No third-party marketing or statistics cookies are set.",
+      "There is no advertising, no social media trackers, no tracking pixels, and no profiling. Analytics run only after you accept them in the banner, and PostHog (EU) is the only analytics service used. If you declined, this site makes no third-party requests at all.",
     processorsHeading: "Service providers",
     processorsBody:
-      "Three processors help run this site, each under a data processing agreement: Vercel (hosting), Supabase (database), and Resend (email delivery of contact notifications).",
+      "Processors helping run this site, each under a data processing agreement: Vercel (hosting), Supabase (database), Resend (email delivery of contact notifications), and — only if you consented to analytics — PostHog (EU-hosted usage analytics).",
     retentionHeading: "How long data is kept",
     retentionBody:
       "Contact messages are kept only as long as needed to handle the conversation. If you want your message deleted, email me and I will remove it.",
