@@ -6,8 +6,26 @@ This repo is a **personal business-card website** for Mārcis Krēgers (fullstac
 
 - `spec.md` — full technical spec (stack, schema, design tokens, requirements)
 - `DESIGN.md` — design source of truth for UI work (component styling, typography, do's & don'ts)
+- `FIX_PLAN.md` — **active work queue**: recruiter-review fixes (tasks 24–30). Work these in the order below before picking up anything else.
 - `tasks/` — one file per task with acceptance criteria. Work one task at a time, in order.
 - `CONTENT_TODO.md` — list of placeholder content to be filled by the owner later
+
+## Active execution order — recruiter-review fix plan (2026-09-15)
+
+Tasks 24–30 in `tasks/` must be done **in this exact order** (rationale and dependencies in `FIX_PLAN.md`):
+
+1. **Task 24** — verify consent banner in prod + close out Task 23 owner items (gate; ~15 min)
+2. **Task 25** — custom domain `marciskregers.qd.je` (start early: external DNS wait)
+3. **Task 30** — hero tagline & meta description (needs owner approval of drafted copy)
+4. **Task 28** — experience timeline year rail fix
+5. **Task 29** — skills: drop L1–L5 self-ratings
+6. **Task 27** — project credibility: secrets audit + key rotation **first** (hard blocker), then publish site repo, fix project links, rewrite Hermes copy
+7. **Task 26** — GitHub profile (last: needs the domain from 25 and the public repo from 27)
+
+Do not skip ahead, do not reorder. Task 27 may not publish any repo before the secrets
+audit passes **and** the leaked keys (Supabase service role, Resend, management PAT,
+notify secret) are rotated. One task at a time; finish a task (acceptance criteria +
+deploy) before starting the next.
 
 ## Rules
 
@@ -48,8 +66,9 @@ supabase secrets set --env-file supabase/.env  # edge function secrets
 ```
 spec.md            tech spec (source of truth)
 AGENTS.md          this file
+FIX_PLAN.md        active work queue: recruiter-review fixes (tasks 24–30)
 CONTENT_TODO.md    placeholder content checklist
-tasks/             task files (01..08)
+tasks/             task files (01..30)
 supabase/          migrations, seeds, edge functions
 site/              Next.js app
 ```
