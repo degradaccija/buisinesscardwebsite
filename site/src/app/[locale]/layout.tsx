@@ -7,6 +7,7 @@ import { getSiteProfile } from "@/lib/content";
 import { buildMetadata } from "@/lib/metadata";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { CookieNotice } from "@/components/CookieNotice";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -66,7 +67,8 @@ export default async function LocaleLayout({
         </a>
         <Nav locale={locale} dict={dict} />
         {children}
-        <Footer dict={dict} profile={profile} />
+        <Footer dict={dict} profile={profile} locale={locale} />
+        <CookieNotice locale={locale} dict={dict} />
       </body>
     </html>
   );

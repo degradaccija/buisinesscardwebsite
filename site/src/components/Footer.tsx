@@ -1,13 +1,17 @@
 import type { Dict } from "@/i18n";
 import type { SiteProfile } from "@/lib/types";
+import type { Locale } from "@/lib/types";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
+import Link from "next/link";
 
 export function Footer({
   dict,
   profile,
+  locale,
 }: {
   dict: Dict;
   profile: SiteProfile | null;
+  locale: Locale;
 }) {
   const year = new Date().getFullYear();
 
@@ -18,6 +22,12 @@ export function Footer({
           © {year} {profile?.name ? `${profile.name}.` : ""} {dict.footer.rights}
         </p>
         <div className="flex items-center gap-4">
+          <Link
+            href={`/${locale}/privacy`}
+            className="font-mono text-sm text-text-muted transition-colors hover:text-accent"
+          >
+            {dict.footer.privacy}
+          </Link>
           {profile?.github_url ? (
             <a
               href={profile.github_url}

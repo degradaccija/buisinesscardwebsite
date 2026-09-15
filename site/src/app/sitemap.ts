@@ -6,9 +6,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const languages = { en: `${base}/en`, lv: `${base}/lv` };
   const lastModified = new Date();
 
-  return ["en", "lv"].map((locale) => ({
-    url: `${base}/${locale}`,
-    lastModified,
-    alternates: { languages },
-  }));
+  return ["en", "lv"].flatMap((locale) => [
+    {
+      url: `${base}/${locale}`,
+      lastModified,
+      alternates: { languages },
+    },
+    {
+      url: `${base}/${locale}/privacy`,
+      lastModified,
+      alternates: {
+        languages: { en: `${base}/en/privacy`, lv: `${base}/lv/privacy` },
+      },
+    },
+  ]);
 }

@@ -6,3 +6,7 @@ design-inspiration/
 .playwright/
 
 supabase/.temp/
+
+# session exports contain live secrets — never commit
+export/
+ope

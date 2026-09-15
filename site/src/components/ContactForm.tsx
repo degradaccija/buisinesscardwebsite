@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
+import Link from "next/link";
 import { CheckCircle2, Send } from "lucide-react";
 import type { Dict } from "@/i18n";
 import type { Locale } from "@/lib/types";
@@ -159,6 +160,16 @@ export function ContactForm({ locale, dict }: { locale: Locale; dict: Dict }) {
           {status === "sending" ? dict.contact.form.sending : dict.contact.form.send}
           <Send className="h-4 w-4" aria-hidden="true" />
         </Button>
+        <p className="mt-3 text-xs leading-relaxed text-text-muted">
+          {dict.contact.form.privacyNote}{" "}
+          <Link
+            href={`/${locale}/privacy`}
+            className="text-accent underline-offset-4 hover:underline"
+          >
+            {dict.contact.form.privacyNoteLink}
+          </Link>
+          .
+        </p>
       </div>
     </form>
   );
