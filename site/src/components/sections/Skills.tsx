@@ -37,9 +37,6 @@ export function Skills({ dict, skills }: { dict: Dict; skills: Skill[] }) {
                   className="flex items-center justify-between gap-4 border-b border-border py-2 last:border-b-0"
                 >
                   <span className="text-sm text-text-primary">{skill.name}</span>
-                  <span className="font-mono text-[11px] tracking-[0.05em] text-accent">
-                    L{skill.level}
-                  </span>
                 </li>
               ))}
             </ul>

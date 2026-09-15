@@ -39,10 +39,12 @@ sorted. Ordering of entries does not regress the strongest roles.
 
 ## Acceptance Criteria
 
-- [ ] Desktop rail reads `2026, 2026, 2025, 2024, 2024` top-to-bottom
-- [ ] Entry order unchanged (Technical Manager stays 2nd, per existing sort_order)
-- [ ] Both locales verified; mobile unchanged
-- [ ] lint/typecheck/build clean; deployed
+- [x] Desktop rail reads `2026, 2026, 2025, 2024, 2024` top-to-bottom (verified live
+      post-deploy 05f4a55)
+- [x] Entry order unchanged (Technical Manager stays 2nd, per existing sort_order)
+- [x] Both locales verified; mobile unchanged (rail is desktop-only `lg:block`)
+- [x] lint/typecheck/build clean; deployed
+- [x] Education rail year = 2026 (end year), consistent with new rule
 
 ## Notes
 
@@ -50,4 +52,9 @@ sorted. Ordering of entries does not regress the strongest roles.
   Engineer" vs intern-level history) is intentionally *not* fixed by rewriting titles
   — it is addressed by the proof layer: Tasks 27/29/30 make the work inspectable and
   the framing honest. Do not inflate job titles.
-- `sort_order` for the education row: confirm it sits last on desktop as intended.
+- `sort_order` for the education row: confirm it sits last on desktop as intended. (It
+  does — education group renders after work group.)
+- Executor note: dispatched twice to the omniroute worker (`auto` + `gemma-4-31b-it`);
+  both runs died on upstream flakiness (combo retry limit / socket drop / context
+  overflow). Implemented directly by the orchestrator as fallback; diff identical to
+  the envelope spec.

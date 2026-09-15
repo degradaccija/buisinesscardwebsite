@@ -31,7 +31,7 @@ const lv: typeof en = {
     cv: "Lejupielādēt CV",
   },
   skills: {
-    note: "Līmeņus L1-L5 novērtēju pats.",
+    note: "Pierādījumi — sadaļā „Projekti“ zemāk.",
     countOne: "prasme",
     countOther: "prasmes",
   },

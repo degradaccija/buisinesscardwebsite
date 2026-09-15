@@ -29,7 +29,7 @@ const en = {
     cv: "Download CV",
   },
   skills: {
-    note: "Levels L1-L5, self assessed.",
+    note: "The proof lives in Projects — below.",
     countOne: "skill",
     countOther: "skills",
   },
