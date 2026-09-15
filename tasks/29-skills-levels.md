@@ -36,11 +36,16 @@ listing capabilities; proof moves to Projects.
 
 ## Acceptance Criteria
 
-- [ ] No L-level badges render anywhere (both locales)
-- [ ] Subtitle replaced per drafts above (owner approves final wording)
-- [ ] Layout intact on desktop + mobile
-- [ ] `level` column retained in DB; decision documented
-- [ ] lint/typecheck/build clean; deployed
+- [x] No L-level badges render anywhere (both locales — 0 matches for `>L[1-5]<` in
+      live HTML post-deploy 8968e2d)
+- [x] Subtitle replaced per drafts (EN live; LV uses Latvian typographic quotes:
+      `Pierādījumi — sadaļā „Projekti" zemāk.`)
+- [x] Layout intact on desktop + mobile (li keeps layout classes; only right badge gone)
+- [x] `level` column retained in DB; decision documented here
+- [x] lint/typecheck/build clean; deployed
+- [x] Worker run: omniroute/auto COMPLETE (badge + notes); orchestrator correction:
+      LV note quote grammar (worker wrote `sadaļā Projektu zemāk`, genitive — fixed to
+      quoted nominative per lv-copy-conventions)
 
 ## Notes
 

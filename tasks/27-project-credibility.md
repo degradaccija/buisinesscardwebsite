@@ -65,7 +65,11 @@ safe to be public.
 
 ## Acceptance Criteria
 
-- [ ] Secrets audit clean **and** leaked keys rotated before publish
+- [x] Secrets audit clean (2026-09-15: full `git log -p --all` pattern scan — 6 hits,
+      all false positives: variable names / .example files / docs; only
+      `*.env.example` files ever tracked) — **but** [ ] leaked keys rotated (owner:
+      Supabase service role, Resend, Supabase management PAT, notify secret — leaked
+      in chat exports, not git) before any repo goes public
 - [ ] `buisinesscardwebsite` repo public with README, no secrets
 - [ ] All three project cards have at least one working external link
 - [ ] Hermes copy states the Nous Research base explicitly, EN + LV
