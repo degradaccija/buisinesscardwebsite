@@ -1,54 +1,57 @@
-# Task 25 — Custom domain `marciskregers.qd.je` live on Vercel
+# Task 25 — Custom domain live on Vercel
 
 **Plan ref:** FIX_PLAN.md finding 1 (the #1 recruiter eye-catcher)
-**Depends on:** nothing technical; start early (external DNS waits)
+**Depends on:** nothing technical; owner registers the domain (2 min)
 **Unblocks:** 26 (GitHub profile website link), 27 (This Website `live_url`)
 
-## Background
+## Route change (2026-09-16): qd.je → marciskregers.us.kg
 
-The site's only address is `buisinesscardwebsite.vercel.app` — a misspelling of
-"business" in the address bar of a web developer's business-card site, and no custom
-domain. The domain `marciskregers.qd.je` (DigitalPlat) is already registered. A previous
-session hit a Vercel TXT-verification block; the agreed fix is switching the domain's
-nameservers to Vercel's. Details of that attempt: `export/domain-setup-session.md`
-(gitignored).
+`marciskregers.qd.je` is **abandoned**: DigitalPlat's panel never applied the NS
+delegation to `ns1/ns2.vercel-dns.com` (repeated submits left the parent delegation
+empty), and even working DNS would not have satisfied Vercel — `qd.je` is not on the
+Public Suffix List, so Vercel demanded an ownership TXT at `_vercel.qd.je` (the parent
+zone DigitalPlat controls). Cloudflare-for-qd.je was evaluated and rejected for the
+same two reasons.
 
-## Goal
+New domain: **`marciskregers.us.kg`** — `us.kg` IS on the PSL, so Vercel treats it as a
+registrable domain. Added to the Vercel project 2026-09-16: **verified true
+immediately, no TXT challenge**.
 
-`https://marciskregers.qd.je` serves the site over HTTPS; the vercel.app URL redirects
-to it; all generated URLs (canonical, OG, sitemap) use the new domain.
+## Remaining steps
 
-## Steps
-
-1. **DNS at DigitalPlat:** set nameservers to `ns1.vercel-dns.com` /
-   `ns2.vercel-dns.com`. Delete the leftover test A record `test.marciskregers.qd.je`.
-   NS changes can take up to 24–48h to propagate (usually much faster).
-2. **Vercel:** project → Settings → Domains → add `marciskregers.qd.je` (and `www` if
-   desired, redirecting to apex). With Vercel nameservers the TXT verification block no
-   longer applies.
-3. Make the custom domain the **production domain** so
-   `VERCEL_PROJECT_PRODUCTION_URL` resolves to it — `site/src/lib/metadata.ts`
-   `siteBaseUrl()` builds `metadataBase`, canonicals and OG URLs from that var, so this
-   step is what flips all generated URLs.
-4. Trigger a redeploy (push or `cd site && npx --yes vercel@latest --prod`).
-5. Verify:
-   - `curl -sI https://marciskregers.qd.je/en` → 200, valid TLS cert
-   - `curl -s https://marciskregers.qd.je/en | grep -o 'og:url[^>]*'` → new domain
-   - `https://marciskregers.qd.je/sitemap.xml` → 200 with new-domain URLs
-   - `https://buisinesscardwebsite.vercel.app` → redirects to the custom domain
-6. Re-run the lighthouse/quick-load sanity check from the review (nothing should regress).
+1. **Owner:** register `marciskregers.us.kg` in the DigitalPlat dashboard
+   (Register Domain → free), then in its DNS records add:
+   - `A` `@` → `216.198.79.1`
+   - `A` `@` → `64.29.17.1`
+   - `CNAME` `www` → `cname.vercel-dns.com`
+2. Poll DNS → HTTPS 200 + valid cert on `https://marciskregers.us.kg/en`.
+3. 308 the old alias: PATCH project domain `buisinesscardwebsite.vercel.app` with
+   `{"redirect":"marciskregers.us.kg","redirectStatusCode":308}`.
+4. Canonical/og flip: if og:url still shows vercel.app (VERCEL_PROJECT_PRODUCTION_URL
+   preference), set `NEXT_PUBLIC_SITE_URL=https://marciskregers.us.kg` (Vercel CLI
+   env rm/add, production+preview) AND reorder `siteBaseUrl()` in
+   `site/src/lib/metadata.ts` to check `NEXT_PUBLIC_SITE_URL` first; lint/typecheck/
+   build, commit, push (git auto-deploy; never `vercel --prod` from the tree).
+5. Flip This Website `live_url` to `https://marciskregers.us.kg` (prod DB PATCH +
+   `supabase/seed.sql` sync) and redeploy.
+6. Verify: /en + /lv 200 on the new domain; vercel.app 308s; sitemap lists us.kg URLs.
+7. Update external references (task 26 GitHub link; owner: LinkedIn).
 
 ## Acceptance Criteria
 
-- [ ] `https://marciskregers.qd.je` serves the site with a valid cert
-- [ ] vercel.app production alias redirects to the custom domain
-- [ ] `og:url`, canonical, and sitemap URLs use `marciskregers.qd.je`
-- [ ] Old `test.marciskregers.qd.je` record gone
+- [ ] `https://marciskregers.us.kg` serves the site with a valid cert
+- [ ] vercel.app production alias 308-redirects to the new domain
+- [ ] `og:url`, canonical, and sitemap URLs use `marciskregers.us.kg`
 - [ ] Both locales verified live on the new domain
 
 ## Notes
 
 - Keep the vercel.app project name as-is (renaming the Vercel project is churn with no
   recruiter benefit once the custom domain is primary).
+- `qd.je` remains registered until Aug 2027; it can be left to lapse or repurposed
+  later. The old qd.je Vercel domain attachment can be removed for tidiness.
+- Automation `Every 30 min: check marciskregers.us.kg DNS, finish Vercel domain
+  (Task 25)` completes steps 2–7 and self-deletes when done.
+
 - After this ships: Task 26 puts the domain on the GitHub profile, and the LinkedIn
   contact info / any CV should be updated manually by the owner.
