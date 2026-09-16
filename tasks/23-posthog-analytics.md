@@ -29,11 +29,14 @@ requests, zero cookies.
 - [x] Key provisioned (owner provided `phs_...` project key 2026-09-15):
       `site/.env.local` + Vercel env (production/preview/development),
       prod rebuild triggered via API git deploy
-- [ ] Self-driving wizard step deferred: `npx @posthog/wizard@latest
-      self-driving` needs ACCOUNT auth (personal key `phx_...` or browser
-      OAuth). The `phs_` project key authenticates ingest only (verified:
-      401 on `/api/users/@me`, 200 on `/batch`), so it cannot drive the
-      wizard. Owner to run OAuth flow or provide a `phx_` key later.
+- [x] Self-driving setup ~90% complete (2026-09-15/16): GitHub App installed
+      (installation 161954787, account degradaccija), wizard workflow at
+      1/9 tasks. **Blocked: account hit its weekly wizard agent-run limit**
+      (burned by repeated automated runs). Resume next week with ONE run:
+      `cd site && npx -y @posthog/wizard@latest self-driving --api-key
+      <phx_ personal key> --project-id 275345` — GitHub step is skipped
+      (already connected); remaining dialogs: issue trackers (answer
+      "None of these"), scout troop, Replay Vision. No more auth prompts.
 
 ## Verification (browser e2e, Brave via playwright-cli, 2026-09-15)
 
@@ -50,10 +53,18 @@ Local build AND production, same results:
 
 ## Notes / decisions
 
-- **Wizard used only for the PostHog-side "self-driving" step**, not for
-  the SDK install: the stock wizard integration loads PostHog
-  unconditionally, which would violate the site's consent gate. The
-  consent-gated provider is hand-written instead.
+- **v2 (2026-09-16): adopted the wizard's consent-aware integration.**
+  The wizard's detection agent read this codebase and built its
+  integration on top of our consent gate (`lib/consent.ts`): client init
+  in `instrumentation-client.ts` only on accepted consent, server-side
+  contact events only when a consented client's distinct-id header is
+  present, project-click events gated by `posthog.__loaded`, full
+  `/ph` assets+array reverse proxy. Replaced my hand-rolled
+  `PostHogAnalytics.tsx` (deleted). Env renamed to
+  `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` (canonical `phc_` token) +
+  `NEXT_PUBLIC_POSTHOG_HOST`. Fixed two strict-mode TS errors in the
+  generated code. Verified in prod e2e: decline = zero requests;
+  accept = config/flags/static via proxy with `phc_` token.
 - Reverse proxy through `/ph` keeps analytics on the site's own domain
   (fewer ad-blocker breakages, no cross-origin third-party endpoint).
 - **PostHog's new project keys use the `phs_` prefix** (older docs say
