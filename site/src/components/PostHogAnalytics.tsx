@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
 import { CONSENT_CHANGE_EVENT, getConsent } from "@/lib/consent";
@@ -9,6 +9,7 @@ const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY;
 
 export function PostHogAnalytics() {
   const pathname = usePathname();
+  const routeChanged = useRef(false);
 
   useEffect(() => {
     if (!POSTHOG_KEY) return;
@@ -21,6 +22,7 @@ export function PostHogAnalytics() {
         capture_pageview: false,
         person_profiles: "identified_only",
       });
+      posthog.capture("$pageview");
     }
 
     if (getConsent() === "accepted") {
@@ -36,6 +38,10 @@ export function PostHogAnalytics() {
   }, []);
 
   useEffect(() => {
+    if (!routeChanged.current) {
+      routeChanged.current = true;
+      return;
+    }
     if (posthog.__loaded) {
       posthog.capture("$pageview");
     }
