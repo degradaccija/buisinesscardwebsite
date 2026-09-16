@@ -1,4 +1,7 @@
+"use client";
+
 import { ArrowUpRight } from "lucide-react";
+import posthog from "posthog-js";
 import type { Dict } from "@/i18n";
 import type { Locale, Project } from "@/lib/types";
 import { Badge } from "@/components/ui/Badge";
@@ -18,6 +21,16 @@ export function ProjectCard({
 }) {
   const description =
     locale === "en" ? project.description_en : project.description_lv;
+
+  function captureProjectLink(linkType: "live" | "repository") {
+    if (!posthog.__loaded) return;
+    posthog.capture("project_link_clicked", {
+      project_id: project.id,
+      link_type: linkType,
+      placement: "featured_card",
+      locale,
+    });
+  }
 
   return (
     <article
@@ -60,6 +73,7 @@ export function ProjectCard({
                 href={project.live_url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => captureProjectLink("live")}
                 className="inline-flex items-center gap-1.5 font-mono text-sm text-accent transition-colors hover:text-accent-hover"
               >
                 {dict.projects.live}
@@ -71,6 +85,7 @@ export function ProjectCard({
                 href={project.repo_url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => captureProjectLink("repository")}
                 className="inline-flex items-center gap-1.5 font-mono text-sm text-text-muted transition-colors hover:text-accent"
               >
                 <GitHubIcon className="h-4 w-4" />

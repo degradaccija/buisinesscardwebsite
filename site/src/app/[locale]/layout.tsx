@@ -8,7 +8,6 @@ import { buildMetadata } from "@/lib/metadata";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { CookieNotice } from "@/components/CookieNotice";
-import { PostHogAnalytics } from "@/components/PostHogAnalytics";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -70,7 +69,6 @@ export default async function LocaleLayout({
         {children}
         <Footer dict={dict} profile={profile} locale={locale} />
         <CookieNotice locale={locale} dict={dict} />
-        <PostHogAnalytics />
       </body>
     </html>
   );

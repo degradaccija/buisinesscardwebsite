@@ -1,0 +1,27 @@
+[
+  {
+    "event_name": "analytics_consent_granted",
+    "event_description": "A visitor accepts analytics in the cookie consent notice.",
+    "file": "instrumentation-client.ts"
+  },
+  {
+    "event_name": "contact_form_submitted",
+    "event_description": "A visitor successfully submits the contact form from the client.",
+    "file": "src/components/ContactForm.tsx"
+  },
+  {
+    "event_name": "contact_message_created",
+    "event_description": "The server successfully stores a validated contact message.",
+    "file": "src/app/api/contact/route.ts"
+  },
+  {
+    "event_name": "project_link_clicked",
+    "event_description": "A visitor opens a live project or source repository from a featured project card.",
+    "file": "src/components/ui/ProjectCard.tsx"
+  },
+  {
+    "event_name": "project_link_clicked",
+    "event_description": "A visitor opens a project link from the project grid.",
+    "file": "src/components/ui/ProjectTile.tsx"
+  }
+]

@@ -1,3 +1,6 @@
+"use client";
+
+import posthog from "posthog-js";
 import type { Project } from "@/lib/types";
 import { ProjectVisual } from "@/components/ui/ProjectVisual";
 
@@ -47,6 +50,14 @@ export function ProjectTile({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={project.title}
+          onClick={() => {
+            if (!posthog.__loaded) return;
+            posthog.capture("project_link_clicked", {
+              project_id: project.id,
+              link_type: project.live_url ? "live" : "repository",
+              placement: "project_grid",
+            });
+          }}
           className="absolute inset-0"
         />
       ) : null}

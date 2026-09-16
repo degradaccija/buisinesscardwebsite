@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import Link from "next/link";
 import { CheckCircle2, Send } from "lucide-react";
+import posthog from "posthog-js";
 import type { Dict } from "@/i18n";
 import type { Locale } from "@/lib/types";
 import { Button } from "@/components/ui/Button";
@@ -50,9 +51,15 @@ export function ContactForm({ locale, dict }: { locale: Locale; dict: Dict }) {
     setMessage("error");
     setStatus("sending");
     try {
+      const analyticsHeaders: Record<string, string> = posthog.__loaded
+        ? {
+            "X-POSTHOG-DISTINCT-ID": posthog.get_distinct_id(),
+            "X-POSTHOG-SESSION-ID": posthog.get_session_id() ?? "",
+          }
+        : {};
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...analyticsHeaders },
         body: JSON.stringify({
           name,
           email,
@@ -67,7 +74,14 @@ export function ContactForm({ locale, dict }: { locale: Locale; dict: Dict }) {
       }
       setStatus("success");
       form.reset();
-    } catch {
+      if (posthog.__loaded) {
+        posthog.capture("contact_form_submitted", {
+          locale,
+          source: "contact_section",
+        });
+      }
+    } catch (error) {
+      if (posthog.__loaded) posthog.captureException(error);
       setStatus("error");
     }
   }
