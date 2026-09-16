@@ -31,7 +31,7 @@ const lv: typeof en = {
     cv: "Lejupielādēt CV",
   },
   skills: {
-    note: "Pierādījumi — sadaļā „Projekti“ zemāk.",
+    note: "Pierādījumi sadaļā „Projekti“ zemāk.",
     countOne: "prasme",
     countOther: "prasmes",
   },
@@ -63,13 +63,13 @@ const lv: typeof en = {
       error: "Kaut kas nogāja greizi. Lūdzu, mēģini vēlreiz.",
       invalid: "Lūdzu, pārbaudi veidlapu: visi lauki ir obligāti un e-pastam jābūt derīgam.",
       hint: "Parasti atbildu 48 stundu laikā.",
-      privacyNote: "Nosūtot, saglabāju Tavu vārdu, e-pastu un ziņu, lai varētu atbildēt — skaties",
+      privacyNote: "Nosūtot, saglabāju Tavu vārdu, e-pastu un ziņu, lai varētu atbildēt. Vairāk skaties",
       privacyNoteLink: "privātuma politikā",
     },
   },
   cookieNotice: {
     message:
-      "Šai vietnei vajag vienu mazu izvēli: piekrīti — un tā saglabā sīkdatni, kas atceras Tavu valodu, un ielādē ES mitinātu analītiku (PostHog); noraidi — un vietne paliek pilnīgi bez sīkdatnēm un pieprasījumiem. Bez reklāmām un izsekošanas pikseļiem.",
+      "Viena maza izvēle: piekrīti, un vietne saglabā sīkdatni, kas atceras Tavu valodu, un ielādē ES mitinātu analītiku (PostHog). Noraidi, un tā paliek bez sīkdatnēm un bez pieprasījumiem. Bez reklāmām un izsekošanas pikseļiem.",
     accept: "Piekrītu",
     decline: "Noraidīt",
     policy: "Privātuma politika",
@@ -91,11 +91,11 @@ const lv: typeof en = {
     dataItems: [
       {
         term: "Sazināšanās veidlapa",
-        text: "Ja raksti man caur veidlapu, saglabāju Tavu vārdu, e-pasta adresi, ziņu un valodu, kurā pārlūkoji vietni. Tos izmantoju tikai, lai izlasītu ziņu un atbildētu. Tiesiskais pamats ir atbilde uz Tavu pieprasījumu pirms iespējama līguma (VDAR 6. panta 1. punkta b) iedaļa) un mans leģitīmās intereses pamatots darbs — atbildēt cilvēkiem, kas sazinās (6. panta 1. punkta f) iedaļa).",
+        text: "Ja raksti man caur veidlapu, saglabāju Tavu vārdu, e-pasta adresi, ziņu un valodu, kurā pārlūkoji vietni. Tos izmantoju tikai, lai izlasītu ziņu un atbildētu. Tiesiskais pamats ir atbilde uz Tavu pieprasījumu pirms iespējama līguma (VDAR 6. panta 1. punkta b) iedaļa) un mana leģitīmā interese atbildēt cilvēkiem, kas sazinās (6. panta 1. punkta f) iedaļa).",
       },
       {
         term: "Analītika (neobligāta)",
-        text: "Tikai ja piekrīti, vietne ielādē PostHog — ES mitinātu analītikas pakalpojumu —, kas reģistrē anonīmus lietojuma datus (apmeklētās lapas, klikšķus), lai es varu uzlabot vietni. Ja noraidi, PostHog netiek ielādēts un neviens pieprasījums nepamet Tavu pārlūku. Tiesiskais pamats: Tava piekrišana (VDAR 6. panta 1. punkta a) iedaļa), ko vari jebkurā laikā atsaukt, nodzēšot šīs vietnes datus no pārlūka krātuves.",
+        text: "Tikai ja piekrīti, vietne ielādē PostHog, ES mitinātu analītikas pakalpojumu, kas reģistrē anonīmus lietojuma datus (apmeklētās lapas, klikšķus), lai es varu uzlabot vietni. Ja noraidi, PostHog netiek ielādēts un neviens pieprasījums nepamet Tavu pārlūku. Tiesiskais pamats: Tava piekrišana (VDAR 6. panta 1. punkta a) iedaļa), ko vari jebkurā laikā atsaukt, nodzēšot šīs vietnes datus no pārlūka krātuves.",
       },
       {
         term: "Aizsardzība pret surogātpastu",
@@ -103,7 +103,7 @@ const lv: typeof en = {
       },
       {
         term: "Valodas sīkdatne",
-        text: "Vietne izveido vienu sīkdatni — NEXT_LOCALE, lai atcerētos, vai izvēlējies angļu vai latviešu valodu. Tā tiek saglabāta tikai, ja piekrīti banerī. Ja noraidi, sīkdatne netiek saglabāta, un valoda katrā apmeklējumā atgriežas pie Tava pārlūka iestatījumiem. Sīkdatne nesatur nevienu identifikatoru un netiek izmantota izsekošanai.",
+        text: "Vietne izveido vienu sīkdatni, NEXT_LOCALE, lai atcerētos, vai izvēlējies angļu vai latviešu valodu. Tā tiek saglabāta tikai, ja piekrīti banerī. Ja noraidi, sīkdatne netiek saglabāta, un valoda katrā apmeklējumā atgriežas pie Tava pārlūka iestatījumiem. Sīkdatne nesatur nevienu identifikatoru un netiek izmantota izsekošanai.",
       },
       {
         term: "Servera žurnāli",
@@ -115,7 +115,7 @@ const lv: typeof en = {
       "Šajā vietnē nav reklāmu, sociālo tīklu izsekotāju, izsekošanas pikseļu vai profilēšanas. Analītika darbojas tikai pēc piekrišanas banerī, un PostHog (ES) ir vienīgais izmantotais analītikas pakalpojums. Ja noraidīji, vietne vispār neveic nevienu pieprasījumu uz trešajām pusēm.",
     processorsHeading: "Pakalpojumu sniedzēji",
     processorsBody:
-      "Vietni uztur šie apstrādātāji, katrs ar datu apstrādes līgumu: Vercel (mitināšana), Supabase (datubāze), Resend (ziņu par kontaktformu e-pasta piegāde) un — tikai ja esi piekritis analītikai — PostHog (ES mitināta lietojuma analītika).",
+      "Vietni uztur šie apstrādātāji, katrs ar datu apstrādes līgumu: Vercel (mitināšana), Supabase (datubāze), Resend (ziņu par kontaktformu e-pasta piegāde) un, tikai ja esi piekritis analītikai, PostHog (ES mitināta lietojuma analītika).",
     retentionHeading: "Cik ilgi dati tiek glabāti",
     retentionBody:
       "Ziņas glabāju tikai tik ilgi, cik nepieciešams sarunas vešanai. Ja vēlies, lai Tava ziņa tiktu dzēsta, raksti man e-pastā, un es to izņemšu.",

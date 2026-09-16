@@ -29,7 +29,7 @@ const en = {
     cv: "Download CV",
   },
   skills: {
-    note: "The proof lives in Projects — below.",
+    note: "The proof is in the Projects section below.",
     countOne: "skill",
     countOther: "skills",
   },
@@ -61,13 +61,13 @@ const en = {
       error: "Something went wrong. Please try again.",
       invalid: "Please check the form: all fields are required and the email must be valid.",
       hint: "I usually reply within 48 hours.",
-      privacyNote: "Sending stores your name, email and message so I can reply — see the",
+      privacyNote: "Sending stores your name, email and message so I can reply. See the",
       privacyNoteLink: "privacy policy",
     },
   },
   cookieNotice: {
     message:
-      "This site needs one small choice: accept and it stores a cookie to remember your language and loads EU-hosted analytics (PostHog); decline and it stays completely cookie-free and request-free. No ads, no tracking pixels.",
+      "One small choice: accept, and the site stores a cookie to remember your language and loads EU-hosted analytics (PostHog). Decline, and it stays cookie-free and request-free. No ads, no tracking pixels.",
     accept: "Accept",
     decline: "Decline",
     policy: "Privacy policy",
@@ -93,7 +93,7 @@ const en = {
       },
       {
         term: "Analytics (optional)",
-        text: "Only if you accept, the site loads PostHog — an EU-hosted analytics service — which records anonymous usage data (pages visited, clicks) so I can improve the site. If you decline, PostHog never loads and not a single request leaves your browser. Legal basis: your consent (GDPR Art. 6(1)(a)), withdrawable anytime by clearing your browser storage for this site.",
+        text: "Only if you accept, the site loads PostHog, an EU-hosted analytics service that records anonymous usage data (pages visited, clicks) so I can improve the site. If you decline, PostHog never loads and not a single request leaves your browser. Legal basis: your consent (GDPR Art. 6(1)(a)), withdrawable anytime by clearing your browser storage for this site.",
       },
       {
         term: "Spam protection",
@@ -113,7 +113,7 @@ const en = {
       "There is no advertising, no social media trackers, no tracking pixels, and no profiling. Analytics run only after you accept them in the banner, and PostHog (EU) is the only analytics service used. If you declined, this site makes no third-party requests at all.",
     processorsHeading: "Service providers",
     processorsBody:
-      "Processors helping run this site, each under a data processing agreement: Vercel (hosting), Supabase (database), Resend (email delivery of contact notifications), and — only if you consented to analytics — PostHog (EU-hosted usage analytics).",
+      "Processors helping run this site, each under a data processing agreement: Vercel (hosting), Supabase (database), Resend (email delivery of contact notifications), and, only if you consented to analytics, PostHog (EU-hosted usage analytics).",
     retentionHeading: "How long data is kept",
     retentionBody:
       "Contact messages are kept only as long as needed to handle the conversation. If you want your message deleted, email me and I will remove it.",

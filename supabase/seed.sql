@@ -9,8 +9,8 @@ values (
   'Pilna cikla web izstrādātājs un MI inženieris',
   'Building web apps, AI agents, and Linux systems that stay running.',
   'Veidoju web lietotnes un MI aģentus, uzturu Linux sistēmas.',
-  'I trained as a computer systems technician. Day to day I choose to work with Linux, because I believe in the Unix philosophy. I build web apps with React, Next.js, and TypeScript, and develop AI agents that automate the monotonous parts of development and server maintenance.\n\nI am also skilled at maintaining and repairing computerized devices of all kinds: from diagnostics to SMD component reballing and board level repair.',
-  'Esmu apguvis datorsistēmu tehniķa profesiju. Ikdienā labprāt strādāju ar Linux operētājsistēmu, jo piekrītu Unix filozofijai. Protu veidot web lietotnes ar React, Next.js un TypeScript, kā arī izstrādāju MI aģentus, kas automatizē dažādus monotonus procesus izstrādes un serveru uzturēšanas laikā.\n\nIzcili protu veikt dažādu datorizētu ierīču apkopes un labošanas darbus: sākot ar diagnostiku un beidzot ar SMD komponenšu pārlodēšanu un board level repair.',
+  'I trained as a computer systems technician. Day to day I work with Linux because I believe in the Unix philosophy. I build web apps with React, Next.js, and TypeScript, and develop AI agents that automate the monotonous parts of development and server maintenance.\n\nI also maintain and repair computers and electronics of all kinds, from diagnostics to SMD component reballing and board level repair.',
+  'Esmu apguvis datorsistēmu tehniķa profesiju. Ikdienā labprāt strādāju ar Linux, jo piekrītu Unix filozofijai. Protu veidot web lietotnes ar React, Next.js un TypeScript, kā arī izstrādāju MI aģentus, kas automatizē monotonus izstrādes un serveru uzturēšanas procesus.\n\nKopju un remontēju arī datorus un elektroniku: no diagnostikas līdz SMD komponenšu pārlodēšanai un board level repair.',
   '/images/about.jpg',
   'marcis.kregers@gmail.com',
   'https://github.com/degradaccija',
@@ -65,8 +65,8 @@ insert into experience (id, type, title_en, title_lv, organization_en, organizat
     'Riga Fashion Week',
     '2024-04-01',
     '2026-04-30',
-    'Ran show technology for Riga Fashion Week, two seasons per year: planned and managed stage, lighting, sound, and AV for the runway shows, leading the technical crew on site.',
-    'Atbildēju par tehnisko nodrošinājumu Riga Fashion Week skatēs, kas notiek divas reizes gadā: plānoju un vadīju skatuves, gaismas, skaņas un AV risinājumus, pasākuma laikā vadot tehnisko komandu.',
+    'Ran show technology for Riga Fashion Week, two seasons per year: planned and managed stage, lighting, sound, and AV for the runway shows and led the technical crew on site.',
+    'Atbildēju par tehnisko nodrošinājumu Riga Fashion Week skatēs, kas notiek divas reizes gadā: plānoju un uzraudzīju skatuves, gaismas, skaņas un AV risinājumus un pasākuma laikā vadīju tehnisko komandu.',
     50
   ),
   (
@@ -128,8 +128,8 @@ insert into projects (id, title, description_en, description_lv, image_url, repo
   (
     '00000000-0000-4000-8000-000000000301',
     'Hermes',
-    'An always-on AI agent setup built on Hermes Agent (Nous Research). The agent core is theirs — the guardrails, custom skills, cron automations, and service wrappers running my home server day to day are mine. Every tool call is logged to SQLite, so a failed run can be replayed and inspected step by step.',
-    'Vienmēr strādājošs MI aģenta uzstādījums uz Hermes Agent (Nous Research) bāzes. Pats aģenta kodols ir gatava atvērtā koda tehnoloģija — bet drošības robežas, pielāgotās prasmes, cron automatizācijas un servisu ietinēji, kas ik dienu uzrauga manu mājas serveri, ir mani darbi. Katrs rīka izsaukums tiek fiksēts SQLite, tāpēc jebkuru neveiksmīgu izpildi var atskaņot un izpētīt soli pa solim.',
+    'An always-on AI agent setup built on Hermes Agent (Nous Research). The agent core is theirs. The guardrails, custom skills, cron automations, and service wrappers that run my home server day to day are mine. Every tool call is logged to SQLite, so a failed run can be replayed and inspected step by step.',
+    'Vienmēr strādājošs MI aģenta uzstādījums uz Hermes Agent (Nous Research) bāzes. Pats aģenta kodols ir gatava atvērtā koda tehnoloģija, bet drošības robežas, pielāgotās prasmes, cron automatizācijas un servisu ietinēji, kas ik dienu uzrauga manu mājas serveri, ir mani darbi. Katrs rīka izsaukums tiek fiksēts SQLite, tāpēc jebkuru neveiksmīgu izpildi var atskaņot un izpētīt soli pa solim.',
     '/images/project-hermes.jpg',
     'https://github.com/degradaccija/hermes-homelab',
     null,
@@ -205,7 +205,7 @@ insert into services (id, title_en, title_lv, description_en, description_lv, ic
     '00000000-0000-4000-8000-000000000405',
     'Tech repair & consulting',
     'Tehnikas remonts un konsultācijas',
-    'Hardware diagnostics and repair for laptops and desktops, plus practical advice on what to buy and when to replace instead of repair.',
+    'Hardware diagnostics and repair for laptops and desktops, plus practical advice on what to buy and when to replace rather than repair.',
     'Portatīvo un galddatoru aparatūras diagnostika un remonts, kā arī praktiski padomi: ko pirkt un kad labāk nomainīt, nevis labot.',
     'Wrench',
     5
