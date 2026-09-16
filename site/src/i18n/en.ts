@@ -40,8 +40,7 @@ const en = {
   },
   projects: {
     featured: "Featured",
-    caseStudy: "Case study",
-    repo: "Source",
+        repo: "Source",
     live: "View live",
   },
   contact: {

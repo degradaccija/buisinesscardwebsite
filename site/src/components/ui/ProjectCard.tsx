@@ -44,11 +44,6 @@ export function ProjectCard({
           sizes="(min-width: 896px) 896px, 100vw"
           className="transition-transform duration-700 ease-snap group-hover:scale-105"
         />
-        {first ? (
-          <span className="absolute right-4 top-4 rounded-full border border-accent/40 bg-surface-2 px-3 py-1 font-mono text-xs text-accent">
-            {dict.projects.caseStudy}
-          </span>
-        ) : null}
       </div>
       <div className="flex flex-1 flex-col p-6 md:p-8">
         {project.tags.length > 0 ? (

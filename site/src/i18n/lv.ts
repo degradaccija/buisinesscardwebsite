@@ -42,8 +42,7 @@ const lv: typeof en = {
   },
   projects: {
     featured: "Izceltie",
-    caseStudy: "Gadījuma pētījums",
-    repo: "Kods",
+        repo: "Kods",
     live: "Skatīt tiešsaistē",
   },
   contact: {
