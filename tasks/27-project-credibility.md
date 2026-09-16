@@ -67,14 +67,21 @@ safe to be public.
 
 - [x] Secrets audit clean (2026-09-15: full `git log -p --all` pattern scan — 6 hits,
       all false positives: variable names / .example files / docs; only
-      `*.env.example` files ever tracked) — **but** [ ] leaked keys rotated (owner:
-      Supabase service role, Resend, Supabase management PAT, notify secret — leaked
-      in chat exports, not git) before any repo goes public
-- [ ] `buisinesscardwebsite` repo public with README, no secrets
-- [ ] All three project cards have at least one working external link
-- [ ] Hermes copy states the Nous Research base explicitly, EN + LV
-- [ ] No static "Case study" label remains on a non-link element
-- [ ] `seed.sql` matches production rows; lint/typecheck/build clean; deployed
+      `*.env.example` files ever tracked)
+- [x] Leaked keys rotated (2026-09-16: Supabase secret key, Management PAT, Resend —
+      new values deployed to `site/.env.local` + `supabase/.env` + Vercel prod env +
+      edge-function secrets; contact flow validated end-to-end and test row removed.
+      NOTIFY_SECRET n/a — owner confirms the notify flow is unused. Keys were pasted
+      in chat, so a final quiet rotation later is recommended)
+- [x] `buisinesscardwebsite` repo public with README, no secrets (description +
+      homepage set; 200 logged out)
+- [x] All three project cards have at least one working external link (Hermes +
+      Homelab → hermes-homelab; This Website → repo + live URL)
+- [x] Hermes copy states the Nous Research base explicitly, EN + LV (live-verified)
+- [x] No static "Case study" label remains on a non-link element (badge + dict keys
+      removed)
+- [x] `seed.sql` matches production rows; lint/typecheck/build clean; deployed
+      (commit 2914980)
 
 ## Notes
 
