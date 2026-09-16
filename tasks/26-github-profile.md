@@ -48,11 +48,24 @@ one-line pitch, and pinned repos that back up the site's claims.
 
 ## Acceptance Criteria
 
-- [ ] Profile shows real name, photo, bio, location, website (no identicon, no nulls)
-- [ ] Profile README repo exists and is public
-- [ ] Pinned: `hermes-homelab` + `buisinesscardwebsite` (+ `pictonic` if described)
-- [ ] `pictonic` described or archived; `n8n` fork not pinned
+- [x] Profile README repo exists and is public
+      (degradaccija/degradaccija created 2026-09-16 via Contents API — commit 70bdd4b;
+      portfolio, Hermes context, LinkedIn links)
+- [x] `pictonic` archived (empty repo, no files, untouched since 2025-09 — inspecting
+      showed nothing to describe); `n8n` fork stays unpinned by default
+- [ ] Profile name / bio / location / website — **owner step**: gh token lacks the
+      `user` scope (PATCH /user → 404). Either run `gh auth refresh -h github.com -s
+      user` then tell me, or set in GitHub UI → Settings → Profile:
+      Name `Mārcis Krēgers` · Bio `Fullstack web developer & AI-agent engineer.
+      Next.js / TypeScript on the web, Linux in the basement.` · Location `Jelgava,
+      Latvia` · Website `https://marciskregers.dpdns.org` (once Task 25 lands; else
+      leave blank until then)
+- [ ] Avatar upload — **owner step** (GitHub has no avatar API): Settings → Profile →
+      upload a square crop of the About-section suit photo
+- [ ] Pinned repos — **owner step** (no GraphQL mutation for profile pins): Profile →
+      Customize your pins → `hermes-homelab` + `buisinesscardwebsite`
 - [ ] Recruiter test: from the live site, ≤ 3 clicks to confirm identity + see work
+      (run after owner steps + Task 25 domain live)
 
 ## Notes
 
