@@ -156,7 +156,7 @@ insert into projects (id, title, description_en, description_lv, image_url, repo
     'Vietne, kuru šobrīd lasi. Divvalodu vizītkarte, būvēta ar Next.js 16, Tailwind un Supabase kā satura pārvaldības sistēmu. Viss saturs atrodas Postgres datubāzē un tiek ielasīts būvēšanas laikā, tāpēc lapa tiek izsniegta kā statisks HTML.',
     '/images/project-site.jpg',
     'https://github.com/degradaccija/buisinesscardwebsite',
-    'https://buisinesscardwebsite.vercel.app',
+    'https://marciskregers.dpdns.org',
     array['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],
     true,
     3
