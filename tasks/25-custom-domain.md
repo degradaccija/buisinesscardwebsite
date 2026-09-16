@@ -42,10 +42,22 @@ immediately, no TXT challenge**.
 
 ## Acceptance Criteria
 
-- [ ] `https://marciskregers.dpdns.org` serves the site with a valid cert
-- [ ] vercel.app production alias 308-redirects to the new domain
-- [ ] `og:url`, canonical, and sitemap URLs use `marciskregers.dpdns.org`
-- [ ] Both locales verified live on the new domain
+- [x] `https://marciskregers.dpdns.org` serves the site with a valid cert
+      (2026-09-16: HTTP/2 200, both locales)
+- [x] vercel.app production alias 308-redirects to the new domain
+      (https://buisinesscardwebsite.vercel.app/en -> 308 -> dpdns.org/en)
+- [x] `og:url`, canonical, and sitemap URLs use `marciskregers.dpdns.org`
+      (og:url live-verified; sitemap lists 12 dpdns.org URLs; NEXT_PUBLIC_SITE_URL env
+      set + siteBaseUrl() reordered to prefer it — commit 5b5554e)
+- [x] Both locales verified live on the new domain
+
+## Post-mortem note
+
+Vercel never re-ran the verification on its own (3+ hours with correct TXT + A).
+Undocumented trigger `POST /v9/projects/{id}/domains/{domain}/verify` forces an
+immediate recheck WITHOUT rotating the challenge code (delete+re-add rotates it every
+time — that cost one TXT round-trip). Also: Vercel env API 403s with the CLI token but
+CLI `vercel env add/rm` works.
 
 ## Notes
 
